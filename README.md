@@ -13,3 +13,6 @@ Analyse technique ici.
 Analyse des écarts ici.
 ## Bilan
 Conclusion.
+
+#### Ressources annexes
+Gitignore files : https://github.com/github/gitignore
