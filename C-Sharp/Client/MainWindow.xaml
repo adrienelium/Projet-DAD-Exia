@@ -6,8 +6,5 @@
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button x:Name="button" Content="Test" HorizontalAlignment="Left" Margin="143,110,0,0" VerticalAlignment="Top" Width="75"/>
-
-    </Grid>
+    <Grid/>
 </Window>
