@@ -1,5 +1,5 @@
 # Projet DAD Exia CESI
-Equipe : Adrien Meltzer @adrienelium 
+Equipe : Adrien Meltzer 
 
 ![alt tag](https://github.com/adrienelium/Projet-BI/blob/master/MadeInExiaCesi.jpg)
 
@@ -16,3 +16,4 @@ Conclusion.
 
 #### Ressources annexes
 Gitignore files : https://github.com/github/gitignore
+Basic writing and formatting syntax : https://help.github.com/articles/basic-writing-and-formatting-syntax/
