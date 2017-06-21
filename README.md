@@ -1,6 +1,8 @@
 # Projet DAD Exia CESI
 Equipe : Adrien Meltzer
 
+![alt tag](https://github.com/adrienelium/Projet-BI/blob/master/MadeInExiaCesi.jpg)
+
 ## Introduction
 Introduction ici.
 ## Modélisation UML commentée de l’application distribuée
