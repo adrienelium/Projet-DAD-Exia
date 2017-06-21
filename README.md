@@ -1,4 +1,4 @@
-# Projet-DAD-Exia
+# Projet DAD Exia CESI
 Equipe : Adrien Meltzer
 
 ## Introduction
