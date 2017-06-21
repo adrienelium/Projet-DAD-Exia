@@ -16,4 +16,5 @@ Conclusion.
 
 #### Ressources annexes
 Gitignore files : https://github.com/github/gitignore
+
 Basic writing and formatting syntax : https://help.github.com/articles/basic-writing-and-formatting-syntax/
