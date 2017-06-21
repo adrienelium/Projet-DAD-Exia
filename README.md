@@ -1,5 +1,5 @@
 # Projet DAD Exia CESI
-Equipe : Adrien Meltzer - Matthew Allen - Clothilde Frechet - Michael Jach
+Equipe : Adrien Meltzer - Matthew Allen - Clotilde Frechet - Michael Jach
 
 ![alt tag](https://github.com/adrienelium/Projet-BI/blob/master/MadeInExiaCesi.jpg)
 
