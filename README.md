@@ -1,5 +1,5 @@
 # Projet DAD Exia CESI
-Equipe : Adrien Meltzer (@github/adrienelium)
+Equipe : Adrien Meltzer @adrienelium 
 
 ![alt tag](https://github.com/adrienelium/Projet-BI/blob/master/MadeInExiaCesi.jpg)
 
