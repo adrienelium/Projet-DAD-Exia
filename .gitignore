@@ -286,3 +286,13 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+/J2EE/calculTauxConfiance/nbproject/private/
+/J2EE/calculTauxConfiance/dist/
+/J2EE/calculTauxConfiance/build/
+/J2EE/JMSmiddleware/nbproject/private/
+/J2EE/JMSmiddleware/JMSmiddleware-war/nbproject/private/
+/J2EE/JMSmiddleware/JMSmiddleware-ejb/nbproject/private/
+/J2EE/JMSmiddleware/JMSmiddleware-ejb/build/
+/J2EE/JMSmiddleware/JMSmiddleware-ejb/dist/
+/J2EE/JMSmiddleware/dist/
+/J2EE/JMSmiddleware/JMSmiddleware-war/build/

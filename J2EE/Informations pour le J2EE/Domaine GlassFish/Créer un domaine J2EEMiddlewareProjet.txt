@@ -1,0 +1,21 @@
+Invite de commande en ADMIN!
+
+Directory : C:\Program Files\glassfish-4.1.1\bin
+- Commande 	: asadmin --user admin create-domain --portbase 10000 --savemasterpassword=true J2EEMiddlewareProjet
+- MDP     	: amiddle
+- Master MDP 	: [changeit] - Mot de passe par défaut
+
+Repertoire d'installation du domaine : 
+- C:\Program Files\glassfish-4.1.1\glassfish\domains
+
+INFOS DOMAINE :
+Using port 12048 for Admin.
+Using port 12080 for HTTP Instance.
+Using port 12076 for JMS.
+Using port 12037 for IIOP.
+Using port 12081 for HTTP_SSL.
+Using port 12038 for IIOP_SSL.
+Using port 12039 for IIOP_MUTUALAUTH.
+Using port 12086 for JMX_ADMIN.
+Using port 12066 for OSGI_SHELL.
+Using port 12009 for JAVA_DEBUGGER.
