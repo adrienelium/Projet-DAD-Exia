@@ -1,5 +1,5 @@
 # Projet DAD Exia CESI
-Equipe : Adrien Meltzer 
+Equipe : Adrien Meltzer - Matthew Allen - Clotilde Frechet - Michael Jach
 
 ![alt tag](https://github.com/adrienelium/Projet-BI/blob/master/MadeInExiaCesi.jpg)
 
@@ -8,7 +8,8 @@ Introduction ici.
 ## Modélisation UML commentée de l’application distribuée
 Modélisation UML ici.
 ## Analyse technique
-Analyse technique ici.
+F x C x A
+Nombre de fichier X Clé alphabétique exposant taille de la clé X Algorithme de chiffrmeent (2-3 algo)
 ## Analyse des écarts
 Analyse des écarts ici.
 ## Bilan
