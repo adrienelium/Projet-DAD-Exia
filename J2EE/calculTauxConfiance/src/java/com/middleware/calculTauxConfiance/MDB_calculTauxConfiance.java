@@ -23,6 +23,7 @@ import javax.jms.MessageListener;
 public class MDB_calculTauxConfiance implements MessageListener {
     
     public MDB_calculTauxConfiance() {
+    
     }
     
     @Override

@@ -1,6 +1,4 @@
-Créer une ressource JMS
-https://docs.oracle.com/cd/E19798-01/821-1751/giotd/index.html
-
+Créer une connection factory JMS
 
 ---- Etape 1 ----
 Ouvrir une invite de commande en "Administrateur" dans le répertoire : C:\Program Files\glassfish-4.1.1\bin
@@ -23,10 +21,12 @@ Command login executed successfully."
 
 ---- Etape 3 ----
 Ecrire ensuite la commande suivante pour créer une ressource JMS:
-- create-jms-resource --restype javax.jms.Queue --property Name=PhysJmsQueue jms/jmsQueue --host localhost --port 12048
+J'utilise la première ligne qui suit (noté #1)
+#1 : create-jms-resource --restype javax.jms.QueueConnectionFactory --property ClientId=JMSMiddleware myQueueConnectionFactory --host localhost --port 12048
+#2 : create-jms-resource --restype javax.jms.ConnectionFactory --property ClientId=JMSMiddleware jms/DurableConnectionFactory --host localhost --port 12048
 
 :::::: On va avoir ensuite un message de ce type ::::::
 "asadmin --host localhost --port 12048 create-jms-resource [options] ...
-Administered object jms/jmsQueue created.
+Connector resource jms/DurableConnectionFactory created.
 Command create-jms-resource executed successfully."
 -----

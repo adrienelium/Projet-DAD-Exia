@@ -287,3 +287,5 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 /J2EE/calculTauxConfiance/nbproject/private/
+/J2EE/calculTauxConfiance/dist/
+/J2EE/calculTauxConfiance/build/
