@@ -1,0 +1,30 @@
+Créer une ressource JMS
+
+---- Etape 1 ----
+Ouvrir une invite de commande en "Administrateur" dans le répertoire : C:\Program Files\glassfish-4.1.1\bin
+Puis écrire:
+- asadmin
+- login --host localhost --port 12048
+
+
+---- Etape 2 ----
+Ecrire les logs du domaine en question ici c'est :
+- Login	: admin
+- MDP 	: amiddle
+
+:::::: On va avoir ensuite le message de ce type ::::::
+"Login information relevant to admin user name [admin] for host [localhost] and admin port [12048] stored at [C:\Users\Michael Jach\.gfclient\pass] successfully.
+Make sure that this file remains protected. Information stored in this file will be used by administration commands to manage associated domain.
+Command login executed successfully."
+------
+
+
+---- Etape 3 ----
+Ecrire ensuite la commande suivante pour créer une ressource JMS:
+- create-jms-resource --restype javax.jms.Queue --property Name=PhysJmsQueue jms/jmsQueue --host localhost --port 12048
+
+:::::: On va avoir ensuite un message de ce type ::::::
+"asadmin --host localhost --port 12048 create-jms-resource [options] ...
+Administered object jms/jmsQueue created.
+Command create-jms-resource executed successfully."
+-----
