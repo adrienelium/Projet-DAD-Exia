@@ -11,17 +11,16 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            KeyByte key = new KeyByte();
-            int[] tab = key.getKeyInBase();
+            var timeStarted = DateTime.Now;
+            Console.WriteLine("Starting now...");
+            KeyByte key = new KeyByte(64);            
 
-            for (int i = 0; i < tab.Length; i++)
+            for (int i = 0; i < 5000; i++)
             {
-
-                    Console.WriteLine(tab[i]);
-                
+                key.GetKey();
             }
 
-
+            Console.WriteLine("Time passed: {0}s", DateTime.Now.Subtract(timeStarted).TotalSeconds);
             Console.Read();
 
         }

@@ -19,24 +19,60 @@ namespace KeyGenerator
                 '6','7','8','9','0','!','$','#','@','-'
             };
 
-        private int keyId = 56890265;
+        private int keyId = 0;
+        private int tabAmountValue;
 
-        public KeyByte() { }
+        public KeyByte(int bitSize) // 32bit pour une clé de 4 caractères
+        {
+            tabAmountValue = bitSize/8;
+        }
 
+        public string GetKey()
+        {
+            double[] listdouble = inverseArray(getKeyInBase());
+
+            keyId++;
+            return string.Join("", translateString(listdouble));
+        }
+
+        private string[] translateString(double[] tab)
+        {
+            string[] tempTab = new string[tabAmountValue];
+            for (int i = 0; i < tab.Length; i++)
+            {
+                int val = (int) tab[i];
+                tempTab[i] = tabAscii[val].ToString();
+            }
+
+            return tempTab;
+        }
+
+        private double[] inverseArray(double[] tabKeyReverse)
+        {
+            double[] tempTab = new double[tabAmountValue];
+
+            for (int i = 0; i < tabAmountValue; i++)
+            {
+                int index = tabAmountValue - 1 - i;
+                tempTab[i] = tabKeyReverse[index];
+            }
+
+            return tempTab;
+        }
         
 
-        public int[] getKeyInBase()
+        private double[] getKeyInBase()
         {
-            int[] tab = new int[8];
+            double[] tab = new double[tabAmountValue];
             int compteur = keyId;
+            int tailleTableau = tabAscii.Length;
 
             int i = 0;
-            while(compteur/tabAscii.Length != 0)
+            while(compteur/ tailleTableau != 0)
             {
-                tab[i] = compteur % tabAscii.Length;
-                compteur = compteur / tabAscii.Length;
+                tab[i] = compteur % tailleTableau;
+                compteur = compteur / tailleTableau;
                 i++;
-                //Debug.WriteLine(compteur);
             }
 
             tab[i] = compteur % tabAscii.Length;
