@@ -11,7 +11,7 @@ namespace ConsoleLiveTest
     {
         static void Main(string[] args)
         {
-            KeyGenerator.KeyByte keygen = new KeyByte(16);
+            KeyGenerator.KeyByte keygen = new KeyByte(32);
 
             while (keygen.nextKeyExist())
             {
