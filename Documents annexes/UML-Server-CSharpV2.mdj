@@ -6326,7 +6326,7 @@
 											"containerExtending": false,
 											"left": 1005,
 											"top": 367,
-											"width": 313.9296875,
+											"width": 314.64697265625,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
@@ -6398,7 +6398,7 @@
 									"containerExtending": false,
 									"left": 1000,
 									"top": 360,
-									"width": 323.9296875,
+									"width": 324.64697265625,
 									"height": 25,
 									"autoResize": false,
 									"stereotypeLabel": {
@@ -6434,7 +6434,7 @@
 									"containerExtending": false,
 									"left": 1000,
 									"top": 385,
-									"width": 323.9296875,
+									"width": 324.64697265625,
 									"height": 10,
 									"autoResize": false
 								},
@@ -6468,7 +6468,7 @@
 											"containerExtending": false,
 											"left": 1005,
 											"top": 400,
-											"width": 313.9296875,
+											"width": 314.64697265625,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
@@ -6497,11 +6497,11 @@
 											"containerExtending": false,
 											"left": 1005,
 											"top": 415,
-											"width": 313.9296875,
+											"width": 314.64697265625,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+void ThreadDecryptDES(string key, string textfile)",
+											"text": "+void ThreadDecryptDES(int sizeKeyBit, string textfile)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -6518,7 +6518,7 @@
 									"containerExtending": false,
 									"left": 1000,
 									"top": 395,
-									"width": 323.9296875,
+									"width": 324.64697265625,
 									"height": 38,
 									"autoResize": false
 								},
@@ -6582,7 +6582,7 @@
 							"containerExtending": false,
 							"left": 1000,
 							"top": 360,
-							"width": 323.9296875,
+							"width": 324.64697265625,
 							"height": 86,
 							"autoResize": false,
 							"stereotypeDisplay": "label",
@@ -8234,12 +8234,12 @@
 							"showShadow": true,
 							"containerChangeable": false,
 							"containerExtending": false,
-							"left": 1056,
+							"left": 944,
 							"top": 480,
 							"width": 225,
 							"height": 41,
 							"autoResize": false,
-							"text": "Création des Threads. 1 Thread pour chaque algo",
+							"text": "Création des Threads. 1 Thread pour chaque fichier par alog ",
 							"wordWrap": true
 						},
 						{
@@ -8258,13 +8258,13 @@
 							"containerChangeable": false,
 							"containerExtending": false,
 							"head": {
-								"$ref": "AAAAAAFcz94UEoqrRn4="
+								"$ref": "AAAAAAFczuYZhpxmfWg="
 							},
 							"tail": {
 								"$ref": "AAAAAAFc4BNR3wcb5Fc="
 							},
 							"lineStyle": 1,
-							"points": "1167:479;1164:446"
+							"points": "1031:479;938:401"
 						}
 					]
 				},
@@ -9756,7 +9756,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFcz9+KAI5Ylpk="
 									},
-									"name": "string key",
+									"name": "int sizeKeyBit",
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
