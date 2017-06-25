@@ -18,21 +18,41 @@ namespace KeyGenerator
                 'S','T','U','V','W','X','Y','Z','1','2','3','4','5',
                 '6','7','8','9','0','!','$','#','@','-'
             };
-
         private int keyId = 0;
         private int tabAmountValue;
+        private double nombreCleMax;
 
         public KeyByte(int bitSize) // 32bit pour une clé de 4 caractères
         {
             tabAmountValue = bitSize/8;
+            nombreCleMax = Math.Pow(tabAscii.Length, tabAmountValue);
         }
 
         public string GetKey()
         {
-            double[] listdouble = inverseArray(getKeyInBase());
+            if (keyId < nombreCleMax)
+            {
+                double[] listdouble = inverseArray(getKeyInBase());
+                keyId++;
+                return string.Join("", translateString(listdouble));
+            }
+            else
+            {
+                return "";
+            }
+            
+        }
 
-            keyId++;
-            return string.Join("", translateString(listdouble));
+        public bool nextKeyExist()
+        {
+            if (keyId < nombreCleMax)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private string[] translateString(double[] tab)
@@ -59,7 +79,6 @@ namespace KeyGenerator
 
             return tempTab;
         }
-        
 
         private double[] getKeyInBase()
         {
@@ -82,8 +101,5 @@ namespace KeyGenerator
         }
 
 
-
-
-       
     }
 }
