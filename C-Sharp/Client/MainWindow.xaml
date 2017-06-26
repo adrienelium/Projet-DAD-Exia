@@ -6,5 +6,7 @@
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid/>
+    <Grid>
+        <Button Content="Call Service" HorizontalAlignment="Left" Margin="189,118,0,0" VerticalAlignment="Top" Width="179" Height="51" Click="Button_Click" />
+    </Grid>
 </Window>
