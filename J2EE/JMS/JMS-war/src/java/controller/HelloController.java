@@ -14,10 +14,9 @@ import javax.jms.JMSConnectionFactory;
 import javax.jms.JMSContext;
 import javax.jms.Queue;
 
-/**
- *
- * @author Michael Jach
- */
+
+
+
 @Named(value = "helloController")
 @SessionScoped
 public class HelloController implements Serializable {
@@ -38,8 +37,6 @@ public class HelloController implements Serializable {
         this.name = name;
     }
 
-    
-    
     
     public HelloController() {
     }
