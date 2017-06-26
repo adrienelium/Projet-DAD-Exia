@@ -20,8 +20,11 @@ import javax.jms.TextMessage;
     @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")
 })
 public class ReceivedMessageBean implements MessageListener {
+    private String consumerName;
+
     
     public ReceivedMessageBean() {
+        this.consumerName = consumerName;
     }
     
     @Override
@@ -29,7 +32,7 @@ public class ReceivedMessageBean implements MessageListener {
         try {
             TextMessage textMessage = (TextMessage)message;
             if(textMessage != null){
-                System.out.println(textMessage.getText());
+                System.out.println("Message consumé :" + textMessage.getText());
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
