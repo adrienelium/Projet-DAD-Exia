@@ -2,5 +2,6 @@ Pour setup un JMS :
 - https://www.javatpoint.com/jms-tutorial
 - https://www.youtube.com/watch?v=xhspWq98Bgk&t=9s
 
-https://www.youtube.com/watch?v=763YuaeR11o&list=PLQ9cQ3JqeqU-a7RyMriIbkdLHP24ZtXPp&index=5
-https://www.youtube.com/watch?v=xhspWq98Bgk
+- Créer un JMS 		: https://www.youtube.com/watch?v=xhspWq98Bgk
+- Créer un WS SOAP 	: https://www.youtube.com/watch?v=zy1bA6xP_3w&list=PLQ9cQ3JqeqU-a7RyMriIbkdLHP24ZtXPp&index=2
+- Créer un Consumer	:
