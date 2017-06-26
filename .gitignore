@@ -296,3 +296,14 @@ __pycache__/
 /J2EE/JMSmiddleware/JMSmiddleware-ejb/dist/
 /J2EE/JMSmiddleware/dist/
 /J2EE/JMSmiddleware/JMSmiddleware-war/build/
+/J2EE/JMS/nbproject/private/
+/J2EE/JMS/JMS-war/nbproject/private/
+/J2EE/JMS/JMS-ejb/nbproject/private/
+/J2EE/EJBModule1/nbproject/private/
+/J2EE/bankFacade-ejb/nbproject/private/
+/J2EE/decryptFacade-ejb/target/
+/J2EE/JMS/JMS-ejb/build/
+/J2EE/JMS/JMS-war/build/
+/J2EE/JMS/build/
+/J2EE/JMS/JMS-war/dist/
+/J2EE/JMS/JMS-ejb/dist/
