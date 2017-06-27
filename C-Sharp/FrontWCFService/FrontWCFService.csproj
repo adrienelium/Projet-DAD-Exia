@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{495C59DF-D0CC-4DCE-8506-3557141ECBA8}</ProjectGuid>
+    <ProjectGuid>{2FF94FF9-F61E-4A74-AE9D-FF88DA9BE38E}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FrontWCFService</RootNamespace>
-    <AssemblyName>FrontWCFService</AssemblyName>
+    <RootNamespace>FrontWcfService</RootNamespace>
+    <AssemblyName>FrontWcfService</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -70,9 +70,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.IdentityModel" />
-    <Reference Include="System.IdentityModel.Selectors" />
-    <Reference Include="System.identitymodel.services" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -96,13 +93,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\Validator.cs" />
     <Compile Include="FrontService.svc.cs">
       <DependentUpon>FrontService.svc</DependentUpon>
     </Compile>
     <Compile Include="IDecryptageService.cs" />
-    <Compile Include="Model\Account.cs" />
-    <Compile Include="Model\AccountModel.cs" />
+    <Compile Include="App_Code\ModelUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +115,19 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Proof Of Concept\KeyGenerator\KeyGenerator.csproj">
+      <Project>{dc90320d-23f3-43ff-b91b-9263c37b3c74}</Project>
+      <Name>KeyGenerator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TokenGen\TokenGen.csproj">
+      <Project>{909deb0d-a4d5-45ff-a6ac-4b62cb17eee0}</Project>
+      <Name>TokenGen</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -133,7 +141,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>60430</DevelopmentServerPort>
+          <DevelopmentServerPort>53467</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:60430/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Client.FrontServiceClient;
+using Client.FrontWcfService;
 
 namespace Client
 {
@@ -24,12 +24,33 @@ namespace Client
         public MainWindow()
         {
             InitializeComponent();
+            username.Focus();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            DecryptageServiceClient client = new DecryptageServiceClient();
-            MessageBox.Show(client.GetText());
+            string token = loginUser(username.Text, password.Password);
+            if (token != "")
+            {
+                Manager man = new Manager(username.Text ,token);
+                man.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Account's invalid","Error",MessageBoxButton.OK,MessageBoxImage.Stop);
+            }
+        }
+
+        private string loginUser(string userName, string passWord)
+        {
+            DecryptageServiceClient service = new DecryptageServiceClient();
+            LogInfo info = service.Login(new LogInfo { username = userName, password = passWord });
+
+            if (info.token != "")
+                return info.token;
+            else
+                return "";
         }
     }
 }

@@ -1,12 +1,17 @@
-﻿<Window x:Class="Client.MainWindow"
+﻿<Window x:Name="DAD" x:Class="Client.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="DAD Manager" Height="244.117" Width="525" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button Content="Call Service" HorizontalAlignment="Left" Margin="189,118,0,0" VerticalAlignment="Top" Width="179" Height="51" Click="Button_Click" />
+        <Button Content="Login" Margin="201,152,195,0" VerticalAlignment="Top" Height="36" Click="Button_Click" IsDefault="True" />
+        <TextBox x:Name="username" HorizontalAlignment="Left" Height="23" Margin="87,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="403"/>
+        <Label x:Name="label" Content="Username : " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.271,0.465"/>
+        <Label x:Name="label1" Content="Please login" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="40" Width="197" FontSize="18" FontWeight="Bold"/>
+        <Label x:Name="label_Copy" Content="Password : " HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
+        <PasswordBox x:Name="password" HorizontalAlignment="Left" Margin="87,99,0,0" VerticalAlignment="Top" Width="403" Height="23"/>
     </Grid>
 </Window>
