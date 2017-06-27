@@ -307,3 +307,4 @@ __pycache__/
 /J2EE/JMS/build/
 /J2EE/JMS/JMS-war/dist/
 /J2EE/JMS/JMS-ejb/dist/
+/J2EE/calculTauxConfiance/tauxConfiance/target/

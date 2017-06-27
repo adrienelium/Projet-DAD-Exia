@@ -20,19 +20,20 @@ import javax.jms.TextMessage;
     @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")
 })
 public class ReceivedMessageBean implements MessageListener {
-    private String consumerName;
+    //private String consumerName;
 
     
     public ReceivedMessageBean() {
-        this.consumerName = consumerName;
+        //this.consumerName = consumerName;
     }
     
     @Override
     public void onMessage(Message message) {
+        TextMessage textMessage = (TextMessage)message;
+       
         try {
-            TextMessage textMessage = (TextMessage)message;
             if(textMessage != null){
-                System.out.println("Message consumé :" + textMessage.getText());
+                System.out.println("MESSAGE BEAN: Message reçu: " + textMessage.getText());
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
