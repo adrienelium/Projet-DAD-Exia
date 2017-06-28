@@ -5,10 +5,14 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{8F6AF80D-A73C-4C38-ADF5-76092366F694}"
 	ProjectSection(ProjectDependencies) = postProject
-		{495C59DF-D0CC-4DCE-8506-3557141ECBA8} = {495C59DF-D0CC-4DCE-8506-3557141ECBA8}
+		{2FF94FF9-F61E-4A74-AE9D-FF88DA9BE38E} = {2FF94FF9-F61E-4A74-AE9D-FF88DA9BE38E}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontWCFService", "FrontWCFService\FrontWCFService.csproj", "{495C59DF-D0CC-4DCE-8506-3557141ECBA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontWcfService", "FrontWcfService\FrontWcfService.csproj", "{2FF94FF9-F61E-4A74-AE9D-FF88DA9BE38E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyGenerator", "..\Proof Of Concept\KeyGenerator\KeyGenerator.csproj", "{DC90320D-23F3-43FF-B91B-9263C37B3C74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokenGen", "TokenGen\TokenGen.csproj", "{909DEB0D-A4D5-45FF-A6AC-4B62CB17EEE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,10 +24,18 @@ Global
 		{8F6AF80D-A73C-4C38-ADF5-76092366F694}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F6AF80D-A73C-4C38-ADF5-76092366F694}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F6AF80D-A73C-4C38-ADF5-76092366F694}.Release|Any CPU.Build.0 = Release|Any CPU
-		{495C59DF-D0CC-4DCE-8506-3557141ECBA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{495C59DF-D0CC-4DCE-8506-3557141ECBA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{495C59DF-D0CC-4DCE-8506-3557141ECBA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{495C59DF-D0CC-4DCE-8506-3557141ECBA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FF94FF9-F61E-4A74-AE9D-FF88DA9BE38E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FF94FF9-F61E-4A74-AE9D-FF88DA9BE38E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FF94FF9-F61E-4A74-AE9D-FF88DA9BE38E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FF94FF9-F61E-4A74-AE9D-FF88DA9BE38E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC90320D-23F3-43FF-B91B-9263C37B3C74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC90320D-23F3-43FF-B91B-9263C37B3C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC90320D-23F3-43FF-B91B-9263C37B3C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC90320D-23F3-43FF-B91B-9263C37B3C74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{909DEB0D-A4D5-45FF-A6AC-4B62CB17EEE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{909DEB0D-A4D5-45FF-A6AC-4B62CB17EEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{909DEB0D-A4D5-45FF-A6AC-4B62CB17EEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{909DEB0D-A4D5-45FF-A6AC-4B62CB17EEE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

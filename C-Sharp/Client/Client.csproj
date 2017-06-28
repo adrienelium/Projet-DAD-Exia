@@ -37,6 +37,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Selectors" />
+    <Reference Include="System.identitymodel.services" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
@@ -57,7 +60,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Service References\FrontServiceClient\Reference.cs">
+    <Compile Include="App_Code\WpfService.cs" />
+    <Compile Include="Service References\FrontWcfService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -74,8 +78,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Manager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Manager.xaml.cs">
+      <DependentUpon>Manager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -98,11 +109,23 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\FrontServiceClient\FrontService.wsdl" />
-    <None Include="Service References\FrontServiceClient\FrontService.xsd">
+    <None Include="Service References\FrontWcfService\Client.FrontWcfService.LogInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FrontWcfService\Client.FrontWcfService.State.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FrontWcfService\FrontService.wsdl" />
+    <None Include="Service References\FrontWcfService\FrontService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\FrontServiceClient\FrontService2.xsd">
+    <None Include="Service References\FrontWcfService\FrontService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FrontWcfService\FrontService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FrontWcfService\FrontService3.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -113,19 +136,19 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\FrontServiceClient\" />
+    <WCFMetadataStorage Include="Service References\FrontWcfService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\FrontServiceClient\FrontService.disco" />
+    <None Include="Service References\FrontWcfService\FrontService.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\FrontServiceClient\configuration91.svcinfo" />
+    <None Include="Service References\FrontWcfService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\FrontServiceClient\configuration.svcinfo" />
+    <None Include="Service References\FrontWcfService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\FrontServiceClient\Reference.svcmap">
+    <None Include="Service References\FrontWcfService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
