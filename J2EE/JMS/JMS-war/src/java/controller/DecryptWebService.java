@@ -40,19 +40,27 @@ public class DecryptWebService {
             @WebParam(name = "nameFile") String name, 
             @WebParam(name = "keyDecriptFile") String keyDecript) {
         
-        String[] toppings = new String[3];
-        toppings[0] = txt;
-        toppings[1] = name;
-        toppings[2] = keyDecript; 
         
-        context.createProducer().send(mydes, toppings);
-        //context.createProducer().send(mydes, txt);
-        //context.createProducer().send(mydes, name);
-        //context.createProducer().send(mydes, keyDecript);
         
-        return "Message envoyé au serveur : \n " 
-                + "Texte du document : " + txt + "\n"
-                + "Nom du document   :" + name + "\n"
-                + "Clef du docuement :" + keyDecript;
+        
+        if(txt != null && name != null && keyDecript != null){
+            String[] toppings = new String[3];
+            toppings[0] = txt;
+            toppings[1] = name;
+            toppings[2] = keyDecript; 
+
+            TripletMessage triplet = new TripletMessage(name, keyDecript, txt);
+            triplet.startConcat();
+            
+            context.createProducer().send(mydes, triplet.startConcat());
+
+            return "Message send au serveur :\n " 
+                    + "Texte du document : " + txt + "\n"
+                    + "Nom du document   :" + name + "\n"
+                    + "Clef du docuement :" + keyDecript;
+            
+        }else{
+            return "Erreur lors de l'envoi du message au serveur. Des informations sont manquantes.";
+        }        
     }
 }

@@ -27,6 +27,7 @@ public class ReceivedMessageBean implements MessageListener {
         //this.consumerName = consumerName;
     }
     
+    
     @Override
     public void onMessage(Message message) {
         TextMessage textMessage = (TextMessage)message;
@@ -40,5 +41,6 @@ public class ReceivedMessageBean implements MessageListener {
         }
         
     }
+    
     
 }

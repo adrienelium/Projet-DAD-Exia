@@ -12,6 +12,9 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 import com.decrypt.tauxconfiance.TraitementTauxConfiance;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.jms.JMSException;
 
 /**
  *
@@ -26,21 +29,22 @@ public class CAM implements MessageListener {
     
     
     public CAM() {
+        System.out.println("Init de CAM");
     }
     
     @Override
     public void onMessage(Message message) {
         TextMessage textMessage = (TextMessage)message;
-       
+        
+                
         try {
             if(textMessage != null){
                 System.out.println("MESSAGE BEAN: Message reçu dans calculTauxConfiance: " + textMessage.getText());
                 
-                
                 // Etape 1 -------
                 //Double tauxConfiance(textMessage.getText());
                 Double tauxConfiance = taux.traitement(textMessage.getText());
-                System.out.println("Taux Confiance calculé : " + tauxConfiance);
+                System.out.println("Taux Confiance calculé : " + tauxConfiance + " %");
                 
                                 
                 if (tauxConfiance > 10.0){

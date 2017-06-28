@@ -19,6 +19,7 @@ import javax.ejb.LocalBean;
 public class TraitementTauxConfiance implements ITraitement<Double> {
     private int nombreDeMots = 0, nbLettresMinimale = 2, nbLettresMaximale = 20, nombreDeMotsMaxAAnalyserDansLeFichier = 100;
     private List<String> bdd =  new ArrayList<String>() ;
+    private ArrayList<String> wordArrayList = new ArrayList<String>();
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
@@ -39,11 +40,10 @@ public class TraitementTauxConfiance implements ITraitement<Double> {
 
     @Override
     public Double traitement(String clearText) {
-        ArrayList<String> wordArrayList = new ArrayList<String>();
         Double taux = 0.0;
        
         for(String word : clearText.split(" ")) {
-            ++nombreDeMots;
+            this.nombreDeMots = nombreDeMots++;
             
             if(nombreDeMots <= this.nombreDeMotsMaxAAnalyserDansLeFichier){
                 
@@ -53,16 +53,20 @@ public class TraitementTauxConfiance implements ITraitement<Double> {
                     if(compareStringToBDD(word, this.bdd)){
                         // # Etape 2 :::: Si le mot est dans la BDD
                         System.out.println("Mot présent dans la base de données : " + word);
-                        wordArrayList.add(word);
+                        this.wordArrayList.add(word);
+                        System.out.println("Ajout du mot dans wordArrayList : " + this.wordArrayList.size());
                     }
                 }
             }
         }
         
         
-        if(!wordArrayList.isEmpty() && nombreDeMots != 0){
-            taux = (double)(wordArrayList.size() / nombreDeMots)*100;
-            System.out.println("Je rentre ici !!" + taux);
+        if(!this.wordArrayList.isEmpty() && this.nombreDeMots != 0){
+            taux = (double)((this.wordArrayList.size() / this.nombreDeMots)*100);
+            System.out.println("Je rentre dans le calcul du taux !!" + taux);
+            System.out.println("Size : " + this.wordArrayList.size());
+            System.out.println("Nb mots : " + this.nombreDeMots);
+            
         }
         
         return taux;
