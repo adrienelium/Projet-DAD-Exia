@@ -38,10 +38,18 @@ public class CAM implements MessageListener {
     
     
     public String convertBinaryToChar(String info){
+        
+        int foo = Integer.parseInt(info);
+        System.out.println("----");
+        System.out.println(foo);
+        System.out.println("----");
+        
         long charCode = Long.parseLong(info, 2);
         String str = new Character((char)charCode).toString();
         return str;
     }
+    
+    
     
     @Override
     public void onMessage(Message message) {
@@ -77,8 +85,10 @@ public class CAM implements MessageListener {
             */
             
             //String binaire = "101110111110011110110001010110100001000001100100001110101111011101101";
-            String binaire = "01110100011001010111001101110100";
+            String binaire = "10111011";
             //convertBinaryToString("1011");
+            
+            
             System.out.println("Retour fonction : " + convertBinaryToChar(binaire));
             System.out.println("------------------------");
         }
