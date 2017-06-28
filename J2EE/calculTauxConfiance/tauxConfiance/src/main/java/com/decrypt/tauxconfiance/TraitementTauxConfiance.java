@@ -36,6 +36,7 @@ public class TraitementTauxConfiance implements ITraitement<Double> {
     @Override
     public Double Traitement(String clearText) {
         Double taux = 0.0;
+        this.nombreDeMots =  0;
        
         for(String word : clearText.split(" ")) {
             this.nombreDeMots = this.nombreDeMots + 1;
