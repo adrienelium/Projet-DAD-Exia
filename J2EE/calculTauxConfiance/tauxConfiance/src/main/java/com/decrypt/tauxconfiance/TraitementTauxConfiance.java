@@ -30,23 +30,19 @@ public class TraitementTauxConfiance implements ITraitement<Double> {
         this.bdd.add("test2");
         this.bdd.add("test3");
         
-        
-        this.nombreDeMots = 0;
-        this.nbLettresMinimale = 2;
-        this.nbLettresMaximale = 20;
-        this.nombreDeMotsMaxAAnalyserDansLeFichier = 100;
     }
     
 
     @Override
-    public Double traitement(String clearText) {
+    public Double Traitement(String clearText) {
         Double taux = 0.0;
        
         for(String word : clearText.split(" ")) {
-            this.nombreDeMots = nombreDeMots++;
+            this.nombreDeMots = this.nombreDeMots + 1;
+            System.out.println("this.nombreDeMots :" + this.nombreDeMots);
+            
             
             if(nombreDeMots <= this.nombreDeMotsMaxAAnalyserDansLeFichier){
-                
                 if(isValidWord(word)){
                     // # Etape 1 :::: Si le mot et considéré comme "Valide" (Mot Francais)
                     
@@ -54,21 +50,14 @@ public class TraitementTauxConfiance implements ITraitement<Double> {
                         // # Etape 2 :::: Si le mot est dans la BDD
                         System.out.println("Mot présent dans la base de données : " + word);
                         this.wordArrayList.add(word);
-                        System.out.println("Ajout du mot dans wordArrayList : " + this.wordArrayList.size());
+                        System.out.println("Ajout du mot dans wordArrayListe : " + this.wordArrayList.size() + " Nombre de mots : " + this.nombreDeMots);
                     }
                 }
             }
         }
-        
-        
         if(!this.wordArrayList.isEmpty() && this.nombreDeMots != 0){
-            taux = (double)((this.wordArrayList.size() / this.nombreDeMots)*100);
-            System.out.println("Je rentre dans le calcul du taux !!" + taux);
-            System.out.println("Size : " + this.wordArrayList.size());
-            System.out.println("Nb mots : " + this.nombreDeMots);
-            
+            taux = ((double)this.wordArrayList.size() / (double)this.nombreDeMots)* 100.0d;            
         }
-        
         return taux;
     }
     

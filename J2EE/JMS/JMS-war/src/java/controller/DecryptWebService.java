@@ -22,7 +22,7 @@ import javax.jws.WebParam;
  *
  * @author Michael Jach
  */
-@WebService(serviceName = "DecryptWebService")
+@WebService(serviceName = "WebServiceAnalysis")
 public class DecryptWebService {  
     
     @Resource(mappedName = "mydes")
@@ -34,31 +34,19 @@ public class DecryptWebService {
     
        
     
-    @WebMethod(operationName = "methodeDecryptage")
+    @WebMethod(operationName = "rechercheDocumentDecrypte")
     public String decryptFile(
+            @WebParam(name = "usernameFile") String username, 
             @WebParam(name = "decryptFile") String txt, 
             @WebParam(name = "nameFile") String name, 
             @WebParam(name = "keyDecriptFile") String keyDecript) {
         
-        
-        
-        
         if(txt != null && name != null && keyDecript != null){
-            String[] toppings = new String[3];
-            toppings[0] = txt;
-            toppings[1] = name;
-            toppings[2] = keyDecript; 
-
-            TripletMessage triplet = new TripletMessage(name, keyDecript, txt);
-            triplet.startConcat();
+            TripletMessage triplet = new TripletMessage(username, name, keyDecript, txt);
+            ObjectMessage msg = context.createObjectMessage(triplet);
+            context.createProducer().send(mydes, msg);
             
-            context.createProducer().send(mydes, triplet.startConcat());
-
-            return "Message send au serveur :\n " 
-                    + "Texte du document : " + txt + "\n"
-                    + "Nom du document   :" + name + "\n"
-                    + "Clef du docuement :" + keyDecript;
-            
+            return "Le message est send au serveur.";
         }else{
             return "Erreur lors de l'envoi du message au serveur. Des informations sont manquantes.";
         }        

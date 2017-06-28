@@ -10,5 +10,5 @@ package com.decrypt.tauxconfiance;
  * @author Michael Jach
  */
 public interface ITraitement<T> {
-    T traitement(String clearText);
+    T Traitement(String clearText);
 }
