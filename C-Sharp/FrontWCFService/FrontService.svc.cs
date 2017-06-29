@@ -15,6 +15,8 @@ namespace FrontWcfService
     // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez Service1.svc ou Service1.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class FrontService : IDecryptageService
     {
+        private DecryptSystem systemDecry;
+
         public State GetState(string username, string token)
         {
             State state = new State();
@@ -29,20 +31,18 @@ namespace FrontWcfService
                         state.amount = 0;
                         state.comment = "Ready to bruteforce";
                         break;
-                    case 1:
-                        state.amount = 1;
-                        state.comment = "25% progress";
+                    case 10:
+                        int amount = 10;
+
+                        int res = userSystem.getPourcent(username);
+
+                        amount += res; 
+
+                        state.amount = amount;
+                        state.comment = amount + "% progress";
                         break;
-                    case 2:
-                        state.amount = 2;
-                        state.comment = "50% progress";
-                        break;
-                    case 3:
-                        state.amount = 3;
-                        state.comment = "75% progress";
-                        break;
-                    case 4:
-                        state.amount = 4;
+                    case 100:
+                        state.amount = 100;
                         state.comment = "100% Finished";
                         break;
                     default:
@@ -50,6 +50,7 @@ namespace FrontWcfService
                         break;
 
                 }
+
                 
                 return state;
             }
@@ -62,9 +63,23 @@ namespace FrontWcfService
 
         }
 
-        public bool LaunchDecryptProcess(string[] str, string token)
+        public bool LaunchDecryptProcess(string[] str, string[] filesNames, string username, string token)
         {
-            throw new NotImplementedException();
+            if (AuthToken(username, token))
+            {
+                ModelUser userSystem = new ModelUser();
+                userSystem.updateStat1True(username);
+
+                systemDecry = new DecryptSystem();
+                systemDecry.Init(str, filesNames, username);
+                systemDecry.Start();
+
+                
+
+                return true;
+            }
+            else
+                return false;
         }
 
         public LogInfo Login(LogInfo loginInfo)
@@ -79,6 +94,7 @@ namespace FrontWcfService
                 userSystem.updateUserToken(idUser, token);
 
                 loginInfo.token = token;
+
                 return loginInfo;
             }
             else
@@ -89,13 +105,27 @@ namespace FrontWcfService
 
         }
 
+        public void Reset(string username, string token)
+        {
+            ModelUser userSystem = new ModelUser();
+            if (AuthToken(username, token))
+            {
+                userSystem.updateResetStatAndPourcent(username);
+            }
+        }
+
         private bool AuthToken(string username ,string token)
         {
             ModelUser userSystem = new ModelUser();
             if (userSystem.isTokenExist(username, token))
+            {
                 return true;
+            }   
             else
+            {
                 return false;
+            }
+                
         }
     }
 }

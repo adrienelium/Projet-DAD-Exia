@@ -162,16 +162,22 @@ namespace Client.FrontWcfService {
         System.Threading.Tasks.Task<Client.FrontWcfService.LogInfo> LoginAsync(Client.FrontWcfService.LogInfo loginInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/LaunchDecryptProcess", ReplyAction="http://tempuri.org/IDecryptageService/LaunchDecryptProcessResponse")]
-        bool LaunchDecryptProcess(string[] str, string token);
+        bool LaunchDecryptProcess(string[] str, string[] filesNames, string username, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/LaunchDecryptProcess", ReplyAction="http://tempuri.org/IDecryptageService/LaunchDecryptProcessResponse")]
-        System.Threading.Tasks.Task<bool> LaunchDecryptProcessAsync(string[] str, string token);
+        System.Threading.Tasks.Task<bool> LaunchDecryptProcessAsync(string[] str, string[] filesNames, string username, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/GetState", ReplyAction="http://tempuri.org/IDecryptageService/GetStateResponse")]
         Client.FrontWcfService.State GetState(string username, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/GetState", ReplyAction="http://tempuri.org/IDecryptageService/GetStateResponse")]
         System.Threading.Tasks.Task<Client.FrontWcfService.State> GetStateAsync(string username, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/Reset", ReplyAction="http://tempuri.org/IDecryptageService/ResetResponse")]
+        void Reset(string username, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/Reset", ReplyAction="http://tempuri.org/IDecryptageService/ResetResponse")]
+        System.Threading.Tasks.Task ResetAsync(string username, string token);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -209,12 +215,12 @@ namespace Client.FrontWcfService {
             return base.Channel.LoginAsync(loginInfo);
         }
         
-        public bool LaunchDecryptProcess(string[] str, string token) {
-            return base.Channel.LaunchDecryptProcess(str, token);
+        public bool LaunchDecryptProcess(string[] str, string[] filesNames, string username, string token) {
+            return base.Channel.LaunchDecryptProcess(str, filesNames, username, token);
         }
         
-        public System.Threading.Tasks.Task<bool> LaunchDecryptProcessAsync(string[] str, string token) {
-            return base.Channel.LaunchDecryptProcessAsync(str, token);
+        public System.Threading.Tasks.Task<bool> LaunchDecryptProcessAsync(string[] str, string[] filesNames, string username, string token) {
+            return base.Channel.LaunchDecryptProcessAsync(str, filesNames, username, token);
         }
         
         public Client.FrontWcfService.State GetState(string username, string token) {
@@ -223,6 +229,14 @@ namespace Client.FrontWcfService {
         
         public System.Threading.Tasks.Task<Client.FrontWcfService.State> GetStateAsync(string username, string token) {
             return base.Channel.GetStateAsync(username, token);
+        }
+        
+        public void Reset(string username, string token) {
+            base.Channel.Reset(username, token);
+        }
+        
+        public System.Threading.Tasks.Task ResetAsync(string username, string token) {
+            return base.Channel.ResetAsync(username, token);
         }
     }
 }

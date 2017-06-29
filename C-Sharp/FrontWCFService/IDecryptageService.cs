@@ -17,10 +17,13 @@ namespace FrontWcfService
         LogInfo Login(LogInfo loginInfo);
 
         [OperationContract]
-        bool LaunchDecryptProcess(string[] str,string token);
+        bool LaunchDecryptProcess(string[] str, string[] filesNames, string username, string token);
 
         [OperationContract]
         State GetState(string username, string token);
+
+        [OperationContract]
+        void Reset(string username, string token);
 
         // TODO: ajoutez vos opérations de service ici
     }

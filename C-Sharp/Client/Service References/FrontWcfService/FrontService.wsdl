@@ -26,6 +26,12 @@
   <wsdl:message name="IDecryptageService_GetState_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetStateResponse" />
   </wsdl:message>
+  <wsdl:message name="IDecryptageService_Reset_InputMessage">
+    <wsdl:part name="parameters" element="tns:Reset" />
+  </wsdl:message>
+  <wsdl:message name="IDecryptageService_Reset_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDecryptageService">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IDecryptageService/Login" message="tns:IDecryptageService_Login_InputMessage" />
@@ -38,6 +44,10 @@
     <wsdl:operation name="GetState">
       <wsdl:input wsaw:Action="http://tempuri.org/IDecryptageService/GetState" message="tns:IDecryptageService_GetState_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDecryptageService/GetStateResponse" message="tns:IDecryptageService_GetState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Reset">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDecryptageService/Reset" message="tns:IDecryptageService_Reset_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDecryptageService/ResetResponse" message="tns:IDecryptageService_Reset_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDecryptageService" type="tns:IDecryptageService">
@@ -62,6 +72,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetState">
       <soap:operation soapAction="http://tempuri.org/IDecryptageService/GetState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reset">
+      <soap:operation soapAction="http://tempuri.org/IDecryptageService/Reset" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
