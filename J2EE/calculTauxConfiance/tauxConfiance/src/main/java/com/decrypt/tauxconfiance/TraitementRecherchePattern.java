@@ -24,10 +24,7 @@ public class TraitementRecherchePattern implements ITraitement<String[]>{
     @Override
     public String[] Traitement(String clearText) {
         List<String> output = new ArrayList<>();
-        
-        // Traitement a faire ici ...
 	String[] tab = EmailValidator(clearText);
-        
         String[] stockArr = new String[output.size()];
         
         for(int i = 0; i < tab.length; i++){
@@ -44,15 +41,11 @@ public class TraitementRecherchePattern implements ITraitement<String[]>{
         while (m.find())
         {
             emailsArray.add( m.group() );
-            System.out.println("test : " + m.group());
         }
         
-        String[] stockArr = new String[emailsArray.size()];
-        stockArr = emailsArray.toArray(stockArr);
+        String[] emailsTrouvee = new String[emailsArray.size()];
+        emailsTrouvee = emailsArray.toArray(emailsTrouvee);
 
-        return stockArr;
+        return emailsTrouvee;
     }
-    
-   
-    
 }
