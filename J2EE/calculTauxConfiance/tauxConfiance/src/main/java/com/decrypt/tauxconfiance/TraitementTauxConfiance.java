@@ -37,25 +37,24 @@ public class TraitementTauxConfiance implements ITraitement<Double> {
     public Double Traitement(String clearText) {
         Double taux = 0.0;
         this.nombreDeMots =  0;
+        this.wordArrayList.clear();
        
         for(String word : clearText.split(" ")) {
-            this.nombreDeMots = this.nombreDeMots + 1;
-            System.out.println("this.nombreDeMots :" + this.nombreDeMots);
-            
+            this.nombreDeMots = this.nombreDeMots + 1;            
             
             if(nombreDeMots <= this.nombreDeMotsMaxAAnalyserDansLeFichier){
                 if(isValidWord(word)){
                     // # Etape 1 :::: Si le mot et considéré comme "Valide" (Mot Francais)
-                    
                     if(compareStringToBDD(word, this.bdd)){
                         // # Etape 2 :::: Si le mot est dans la BDD
-                        System.out.println("Mot présent dans la base de données : " + word);
                         this.wordArrayList.add(word);
-                        System.out.println("Ajout du mot dans wordArrayListe : " + this.wordArrayList.size() + " Nombre de mots : " + this.nombreDeMots);
                     }
                 }
             }
         }
+        System.out.println("Correspondance établie: " + this.wordArrayList.size() + "\n Nombre de mots : " + this.nombreDeMots);
+        
+        
         if(!this.wordArrayList.isEmpty() && this.nombreDeMots != 0){
             taux = ((double)this.wordArrayList.size() / (double)this.nombreDeMots)* 100.0d;            
         }
@@ -66,9 +65,11 @@ public class TraitementTauxConfiance implements ITraitement<Double> {
     
     
     
-    /*
-    * Fonction pour tester si le mot correspond aux critères
-    */
+    /*--------------------------------------------------------------------
+    * Fonction pour tester si le mot est présent dans la base de données 
+    * fournie, si le mot correspond alors la valeur retournée et TRUE, sinon
+    * c'est FALSE
+    --------------------------------------------------------------------*/
     public Boolean compareStringToBDD(String motFichier, List<String> bdd){
         motFichier = motFichier.toLowerCase();
         
@@ -85,9 +86,12 @@ public class TraitementTauxConfiance implements ITraitement<Double> {
     
     
 
-    /*
-    * Fonction pour tester si le mot correspond aux critères
-    */
+    /*--------------------------------------------------------------------
+    * Fonction pour tester si le mot peut être considéré comme Francais
+    * Vu que en BDD la taille du mot minimum et d'environ 3 caractères,
+    * il est inutile de checker si les mots en base s'il font moins de la
+    * taille de mot minimum présent dans la base de données.
+    --------------------------------------------------------------------*/
     public Boolean isValidWord(String mot){
         int nombreDelettres = 0;
         for (int i=0; i<mot.length(); i++) {

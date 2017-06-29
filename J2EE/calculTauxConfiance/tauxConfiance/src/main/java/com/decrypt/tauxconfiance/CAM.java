@@ -37,24 +37,27 @@ public class CAM implements MessageListener {
     }
     
     
-    public String convertBinaryToChar(String info){
+    public String convertBinaryToChar(String info, int nbBitPerCharacters){
+        int foo = 0;
+        long charCode;
+        String stringConvertie = "";
+        String [] binaryChar = info.split("(?<=\\G.{"+nbBitPerCharacters+"})");
+                
         
-        int foo = Integer.parseInt(info);
-        System.out.println("----");
-        System.out.println(foo);
-        System.out.println("----");
-        
-        long charCode = Long.parseLong(info, 2);
-        String str = new Character((char)charCode).toString();
-        return str;
+        for(int i = 0; i < binaryChar.length; i++){
+            charCode = Long.parseLong(binaryChar[i], 2);
+            stringConvertie += new Character((char)charCode).toString();
+        }
+        return stringConvertie;
     }
     
     
     
     @Override
     public void onMessage(Message message) {
-        
+        String messageFichierDecrypte;
         TripletMessage triplet;
+        
         try {
             ObjectMessage msg = (ObjectMessage) message;
             triplet = (TripletMessage) msg.getObject();
@@ -65,31 +68,14 @@ public class CAM implements MessageListener {
             System.out.println("User: " + triplet.nomUser);
             System.out.println("Key : " + triplet.cleFichier);
             
-            /*
-            int charCode = Integer.parseInt(triplet.messFichier, 2);
-            String str = new Character((char)charCode).toString();
-            System.out.println( str );
-            */            
             
-            /*
             try{
-            
-                int charCode = Integer.parseInt(triplet.messFichier, 2);
-                String str = new Character((char)charCode).toString();
-                System.out.println( str );
-            */
-            /*
+                messageFichierDecrypte = convertBinaryToChar(triplet.messFichier, 8);
             }catch(Exception ex){
-                System.out.println("Le message n'est pas en binaire.");
+                messageFichierDecrypte = triplet.messFichier;
             }
-            */
             
-            //String binaire = "101110111110011110110001010110100001000001100100001110101111011101101";
-            String binaire = "10111011";
-            //convertBinaryToString("1011");
-            
-            
-            System.out.println("Retour fonction : " + convertBinaryToChar(binaire));
+            System.out.println("Message contenu dans le fichier : \" " + messageFichierDecrypte + "\"");
             System.out.println("------------------------");
         }
         catch (Exception ex) {
@@ -97,25 +83,25 @@ public class CAM implements MessageListener {
             return;
         }
 
+        
+        
+        
         try {
-            System.out.println("MESSAGE BEAN: Message reçu dans calculTauxConfiance.");
+            System.out.println("----- MESSAGE BEAN: Message reçu dans calculTauxConfiance -----");
+            
+            // Etape 1 ------- Calcul du taux de confiance
+            Double tauxConfiance = taux.Traitement(messageFichierDecrypte);
+            System.out.println("Taux de confiance du fichier décrypté : " + tauxConfiance + " %");
 
-            // Etape 1 -------
-            //Double tauxConfiance(textMessage.getText());
-            String messageDecryt = triplet.messFichier;
-
-            Double tauxConfiance = taux.Traitement(messageDecryt);
-            System.out.println("Taux Confiance calculé : " + tauxConfiance + " %");
-
-
+            
+            // Etape 2 ------- Recherche de l'adresse email
             if (tauxConfiance > 10.0){
-                System.out.println("Je rentre ici");
+                System.out.println("Recherche de l'adresse email dans le fichier décrypté...");
                 TraitementRecherchePattern email = new TraitementRecherchePattern();
-                email.Traitement(messageDecryt);
-
-                //int[] myIntArray = new int[3];
-                //String adresseEmail = email.traitement(textMessage.getText());
+                email.Traitement(messageFichierDecrypte);
             }   
+            
+            System.out.println("---------------------------------------------------------------");
             
         } catch (Exception e) {
             System.out.println(e.getMessage());
