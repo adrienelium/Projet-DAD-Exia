@@ -5,6 +5,7 @@
  */
 package com.decrypt.tauxconfiance;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -21,26 +22,30 @@ public class TraitementRecherchePattern implements ITraitement<String[]>{
     
     
     @Override
-    public String[] traitement(String clearText) {
+    public String[] Traitement(String clearText) {
         List<String> output = new ArrayList<>();
-        
-        // Traitement a faire ici ...
-	EmailValidator(clearText);
-        
+	String[] tab = EmailValidator(clearText);
         String[] stockArr = new String[output.size()];
-        System.out.println("Taille de l'array retourné pour l'email : " + output.toArray(stockArr).length);
+        
+        for(int i = 0; i < tab.length; i++){
+            System.out.println("Adresse email trouvée " + (i+1) + ": " + tab[i]);
+        }
+        
         return output.toArray(stockArr);
     }
     
     
-    public String EmailValidator(String clearText) {
+    public String[] EmailValidator(String clearText) {
         Matcher m = p.matcher(clearText);
+        ArrayList<String> emailsArray = new ArrayList<String>();
         while (m.find())
         {
-            System.out.println(m.group());
+            emailsArray.add( m.group() );
         }
-             
-        return m.group();
+        
+        String[] emailsTrouvee = new String[emailsArray.size()];
+        emailsTrouvee = emailsArray.toArray(emailsTrouvee);
+
+        return emailsTrouvee;
     }
-    
 }
