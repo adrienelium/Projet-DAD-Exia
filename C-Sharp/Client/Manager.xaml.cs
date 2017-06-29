@@ -79,23 +79,28 @@ namespace Client
 
                 if (state.amount == 0)
                 {
-                    seeresult.IsEnabled = false;
                     browse.IsEnabled = true;
                     reset.IsEnabled = false;
                 }
                 else if (state.amount >= 10 && state.amount < 100)
                 {
-                    seeresult.IsEnabled = false;
                     browse.IsEnabled = false;
                     launchbutton.IsEnabled = false;
                     reset.IsEnabled = true;
                 }
                 else if(state.amount == 100)
                 {
-                    seeresult.IsEnabled = true;
                     browse.IsEnabled = true;
-                    launchbutton.IsEnabled = false;
                     reset.IsEnabled = false;
+                }
+
+                if (state.resultExist)
+                {
+                    seeresult.IsEnabled = true;
+                }
+                else
+                {
+                    seeresult.IsEnabled = false;
                 }
 
             }));
@@ -109,8 +114,11 @@ namespace Client
 
         private void seeresult_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Coming soon !!");
-            // Open dialog with textbox for text and textbox for mail
+            DecryptageServiceClient service = new DecryptageServiceClient();
+            FrontWcfService.Result res = service.GetResult(username, token);
+
+            Result fenres = new Result(res.docname, res.content, res.taux, res.key);
+            fenres.Show();
         }
 
         private void launchbutton_Click(object sender, RoutedEventArgs e)

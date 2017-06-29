@@ -17,6 +17,31 @@ namespace FrontWcfService
     {
         private DecryptSystem systemDecry;
 
+        /// <summary>
+        /// Renvoi le resultat d'un traitement J2EE sous forme d'un objet Result
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public Result GetResult(string username, string token)
+        {
+            Result res = new Result();
+
+            if (AuthToken(username, token))
+            {
+                ModelUser userSystem = new ModelUser();
+                res = userSystem.getResult(username);
+            }
+
+            return res;
+        }
+
+        /// <summary>
+        /// Renvoi l'état de la demande en cours sous la forme d'un objet State.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public State GetState(string username, string token)
         {
             State state = new State();
@@ -51,24 +76,35 @@ namespace FrontWcfService
 
                 }
 
+                state.resultExist = userSystem.isResultExist(username);
+
                 
                 return state;
             }
             else
             {
-                state.amount = 0; // 0 ready - 1 25% key generated - 2 50% key generated - 3 75% key generated - 4 100% key generated
+                state.amount = 0; 
                 state.comment = "Invalid token";
                 return state;
             }
 
         }
 
+        /// <summary>
+        /// Lance le processus de décryptage des fichiers
+        /// </summary>
+        /// <param name="str">Tableau de fichiers sous forme de string</param>
+        /// <param name="filesNames">Tableau de nom de fichier sous forme de string</param>
+        /// <param name="username"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public bool LaunchDecryptProcess(string[] str, string[] filesNames, string username, string token)
         {
             if (AuthToken(username, token))
             {
                 ModelUser userSystem = new ModelUser();
                 userSystem.updateStat1True(username);
+                userSystem.resetResultByUsername(username);
 
                 systemDecry = new DecryptSystem();
                 systemDecry.Init(str, filesNames, username);
@@ -82,6 +118,11 @@ namespace FrontWcfService
                 return false;
         }
 
+        /// <summary>
+        /// Réalise une authentification en fonction de l'objet LogInfo envoyé
+        /// </summary>
+        /// <param name="loginInfo">Objet LogInfo contenant les crédentials</param>
+        /// <returns></returns>
         public LogInfo Login(LogInfo loginInfo)
         {
             ModelUser userSystem = new ModelUser();
@@ -105,6 +146,11 @@ namespace FrontWcfService
 
         }
 
+        /// <summary>
+        /// Annule un traitement Bruteforce
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="token"></param>
         public void Reset(string username, string token)
         {
             ModelUser userSystem = new ModelUser();

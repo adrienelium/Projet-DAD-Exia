@@ -89,16 +89,23 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ResultService.svc" />
     <Content Include="FrontService.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DecryptSystem.cs" />
+    <Compile Include="CAM-DecryptSystem.cs" />
+    <Compile Include="ResultService.svc.cs">
+      <DependentUpon>ResultService.svc</DependentUpon>
+    </Compile>
     <Compile Include="FrontService.svc.cs">
       <DependentUpon>FrontService.svc</DependentUpon>
     </Compile>
     <Compile Include="IDecryptageService.cs" />
     <Compile Include="App_Code\ModelUser.cs" />
+    <Compile Include="IResultService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -17,19 +17,6 @@ namespace FrontWcfService.App_Code
             
         }
 
-        ~ModelUser()
-        {
-            /*try
-            {
-                conn.Close();
-            }
-            catch (Exception)
-            {
-
-            }*/
-            
-        }
-
         public bool isUserExist(string username, string password)
         {
             using (SqlConnection conn = new SqlConnection())
@@ -58,6 +45,93 @@ namespace FrontWcfService.App_Code
                     return false;
                 }
                   
+            }
+        }
+
+        public void updateResultByUsername(string docname, string content, string taux, string key, string username)
+        {
+            using (SqlConnection conn = new SqlConnection())
+            {
+
+                conn.ConnectionString = strConn;
+                conn.Open();
+                SqlCommand command = new SqlCommand("UPDATE Users SET result_docname = @0, result_content = @1, result_taux = @2, result_key = @3, result_found = @5 WHERE username = @4", conn);
+                command.Parameters.Add(new SqlParameter("0", docname));
+                command.Parameters.Add(new SqlParameter("1", content));
+                command.Parameters.Add(new SqlParameter("2", taux));
+                command.Parameters.Add(new SqlParameter("3", key));
+                command.Parameters.Add(new SqlParameter("5", true));
+                command.Parameters.Add(new SqlParameter("4", username));
+
+                command.ExecuteReader();
+                conn.Close();
+            }
+        }
+
+        public void resetResultByUsername(string username)
+        {
+            using (SqlConnection conn = new SqlConnection())
+            {
+
+                conn.ConnectionString = strConn;
+                conn.Open();
+                SqlCommand command = new SqlCommand("UPDATE Users SET result_docname = @0, result_content = @1, result_taux = @2, result_key = @3, result_found = @5 WHERE username = @4", conn);
+                command.Parameters.Add(new SqlParameter("0", ""));
+                command.Parameters.Add(new SqlParameter("1", ""));
+                command.Parameters.Add(new SqlParameter("2", ""));
+                command.Parameters.Add(new SqlParameter("3", ""));
+                command.Parameters.Add(new SqlParameter("5", false));
+                command.Parameters.Add(new SqlParameter("4", username));
+
+                command.ExecuteReader();
+                conn.Close();
+            }
+        }
+
+        public bool isResultExist(string username)
+        {
+            using (SqlConnection conn = new SqlConnection())
+            {
+
+                conn.ConnectionString = strConn;
+                conn.Open();
+
+                SqlCommand command = new SqlCommand("SELECT result_found FROM Users WHERE username = @0", conn);
+                command.Parameters.Add(new SqlParameter("0", username));
+
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+
+                bool res = reader.GetBoolean(0);
+
+                reader.Close();
+                conn.Close();
+
+                return res;
+
+            }
+        }
+
+        public Result getResult(string username)
+        {
+            using (SqlConnection conn = new SqlConnection())
+            {
+
+                conn.ConnectionString = strConn;
+                conn.Open();
+
+                SqlCommand commanduser = new SqlCommand("SELECT result_docname,result_content,result_taux,result_key FROM Users WHERE username = @0", conn);
+                commanduser.Parameters.Add(new SqlParameter("0", username));
+
+                SqlDataReader readeruser = commanduser.ExecuteReader();
+                readeruser.Read();
+
+                Result res = new Result { docname = readeruser.GetString(0), content = readeruser.GetString(1), taux = readeruser.GetInt32(2), key = readeruser.GetString(3) };
+
+                readeruser.Close();
+                conn.Close();
+
+                return res;
             }
         }
 

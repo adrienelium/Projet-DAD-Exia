@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Client.FrontWcfService {
+namespace CUC_Client.FrontWCFService {
     using System.Runtime.Serialization;
     using System;
     
@@ -261,14 +261,14 @@ namespace Client.FrontWcfService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="FrontWcfService.IDecryptageService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="FrontWCFService.IDecryptageService")]
     public interface IDecryptageService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/Login", ReplyAction="http://tempuri.org/IDecryptageService/LoginResponse")]
-        Client.FrontWcfService.LogInfo Login(Client.FrontWcfService.LogInfo loginInfo);
+        CUC_Client.FrontWCFService.LogInfo Login(CUC_Client.FrontWCFService.LogInfo loginInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/Login", ReplyAction="http://tempuri.org/IDecryptageService/LoginResponse")]
-        System.Threading.Tasks.Task<Client.FrontWcfService.LogInfo> LoginAsync(Client.FrontWcfService.LogInfo loginInfo);
+        System.Threading.Tasks.Task<CUC_Client.FrontWCFService.LogInfo> LoginAsync(CUC_Client.FrontWCFService.LogInfo loginInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/LaunchDecryptProcess", ReplyAction="http://tempuri.org/IDecryptageService/LaunchDecryptProcessResponse")]
         bool LaunchDecryptProcess(string[] str, string[] filesNames, string username, string token);
@@ -277,10 +277,10 @@ namespace Client.FrontWcfService {
         System.Threading.Tasks.Task<bool> LaunchDecryptProcessAsync(string[] str, string[] filesNames, string username, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/GetState", ReplyAction="http://tempuri.org/IDecryptageService/GetStateResponse")]
-        Client.FrontWcfService.State GetState(string username, string token);
+        CUC_Client.FrontWCFService.State GetState(string username, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/GetState", ReplyAction="http://tempuri.org/IDecryptageService/GetStateResponse")]
-        System.Threading.Tasks.Task<Client.FrontWcfService.State> GetStateAsync(string username, string token);
+        System.Threading.Tasks.Task<CUC_Client.FrontWCFService.State> GetStateAsync(string username, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/Reset", ReplyAction="http://tempuri.org/IDecryptageService/ResetResponse")]
         void Reset(string username, string token);
@@ -289,19 +289,19 @@ namespace Client.FrontWcfService {
         System.Threading.Tasks.Task ResetAsync(string username, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/GetResult", ReplyAction="http://tempuri.org/IDecryptageService/GetResultResponse")]
-        Client.FrontWcfService.Result GetResult(string username, string token);
+        CUC_Client.FrontWCFService.Result GetResult(string username, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/GetResult", ReplyAction="http://tempuri.org/IDecryptageService/GetResultResponse")]
-        System.Threading.Tasks.Task<Client.FrontWcfService.Result> GetResultAsync(string username, string token);
+        System.Threading.Tasks.Task<CUC_Client.FrontWCFService.Result> GetResultAsync(string username, string token);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IDecryptageServiceChannel : Client.FrontWcfService.IDecryptageService, System.ServiceModel.IClientChannel {
+    public interface IDecryptageServiceChannel : CUC_Client.FrontWCFService.IDecryptageService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class DecryptageServiceClient : System.ServiceModel.ClientBase<Client.FrontWcfService.IDecryptageService>, Client.FrontWcfService.IDecryptageService {
+    public partial class DecryptageServiceClient : System.ServiceModel.ClientBase<CUC_Client.FrontWCFService.IDecryptageService>, CUC_Client.FrontWCFService.IDecryptageService {
         
         public DecryptageServiceClient() {
         }
@@ -322,11 +322,11 @@ namespace Client.FrontWcfService {
                 base(binding, remoteAddress) {
         }
         
-        public Client.FrontWcfService.LogInfo Login(Client.FrontWcfService.LogInfo loginInfo) {
+        public CUC_Client.FrontWCFService.LogInfo Login(CUC_Client.FrontWCFService.LogInfo loginInfo) {
             return base.Channel.Login(loginInfo);
         }
         
-        public System.Threading.Tasks.Task<Client.FrontWcfService.LogInfo> LoginAsync(Client.FrontWcfService.LogInfo loginInfo) {
+        public System.Threading.Tasks.Task<CUC_Client.FrontWCFService.LogInfo> LoginAsync(CUC_Client.FrontWCFService.LogInfo loginInfo) {
             return base.Channel.LoginAsync(loginInfo);
         }
         
@@ -338,11 +338,11 @@ namespace Client.FrontWcfService {
             return base.Channel.LaunchDecryptProcessAsync(str, filesNames, username, token);
         }
         
-        public Client.FrontWcfService.State GetState(string username, string token) {
+        public CUC_Client.FrontWCFService.State GetState(string username, string token) {
             return base.Channel.GetState(username, token);
         }
         
-        public System.Threading.Tasks.Task<Client.FrontWcfService.State> GetStateAsync(string username, string token) {
+        public System.Threading.Tasks.Task<CUC_Client.FrontWCFService.State> GetStateAsync(string username, string token) {
             return base.Channel.GetStateAsync(username, token);
         }
         
@@ -354,11 +354,11 @@ namespace Client.FrontWcfService {
             return base.Channel.ResetAsync(username, token);
         }
         
-        public Client.FrontWcfService.Result GetResult(string username, string token) {
+        public CUC_Client.FrontWCFService.Result GetResult(string username, string token) {
             return base.Channel.GetResult(username, token);
         }
         
-        public System.Threading.Tasks.Task<Client.FrontWcfService.Result> GetResultAsync(string username, string token) {
+        public System.Threading.Tasks.Task<CUC_Client.FrontWCFService.Result> GetResultAsync(string username, string token) {
             return base.Channel.GetResultAsync(username, token);
         }
     }

@@ -25,6 +25,9 @@ namespace FrontWcfService
         [OperationContract]
         void Reset(string username, string token);
 
+        [OperationContract]
+        Result GetResult(string username, string token);
+
         // TODO: ajoutez vos opérations de service ici
     }
 
@@ -52,7 +55,24 @@ namespace FrontWcfService
 
         [DataMember]
         public int amount { get; set; }
-        
 
+        [DataMember]
+        public bool resultExist { get; set; }
+    }
+
+    public class Result
+    {
+
+        [DataMember]
+        public string docname { get; set; }
+
+        [DataMember]
+        public string content { get; set; }
+
+        [DataMember]
+        public int taux { get; set; }
+
+        [DataMember]
+        public string key { get; set; }
     }
 }

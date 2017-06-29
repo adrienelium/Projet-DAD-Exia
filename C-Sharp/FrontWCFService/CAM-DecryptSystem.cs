@@ -69,7 +69,7 @@ namespace FrontWcfService
                     userSystem.updatePourcent(username, Convert.ToInt32(res));
                 }
 
-                if (!userSystem.getStat1(username))
+                if (!userSystem.getStat1(username) || userSystem.isResultExist(username))
                     Stop();
 
                 Thread.Sleep(100);
@@ -91,8 +91,8 @@ namespace FrontWcfService
             {
                 keyGenerated++;
                 string key = keygen.GetKey();
-                //string decryptedFile = XORdecrypt(filestr, key);
-                string decryptedFile = XORdecrypt(filestr, "fjuiop");
+                string decryptedFile = XORdecrypt(filestr, key);
+                //string decryptedFile = XORdecrypt(filestr, "fjuiop");
 
                 string contentReadyTosend = ChaineToBinaire(decryptedFile).ToString();
 
