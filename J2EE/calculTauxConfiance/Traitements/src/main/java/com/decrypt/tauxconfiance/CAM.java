@@ -15,6 +15,8 @@ import com.store.jpa.Mot;
 import controller.TripletMessage;
 import java.util.List;
 import javax.jms.ObjectMessage;
+import com.store.jpa.ConnexionBDDSql;
+import java.sql.Connection;
 
 /**
  *
@@ -26,15 +28,15 @@ import javax.jms.ObjectMessage;
 })
 public class CAM implements MessageListener {
     @EJB private TraitementTauxConfiance taux;
-    private ConnectDB connexionDB;
-    private List<Mot> listeMot;
+    //private ConnectDB connexionDB;
+    private List<String> listeMotsDeLaBDD;
     
     public CAM() {
         System.out.println("Init de CAM");
         
-        this.connexionDB = new ConnectDB();
+        //this.connexionDB = new ConnectDB();
         //EntityManager em = this.connexionDB.getEm();
-        //this.listeMot = this.connexionDB.GetListeMot();
+        //this.listeMotsDeLaBDD = this.connexionDB.GetListeMot();
         
     }
     
@@ -80,8 +82,10 @@ public class CAM implements MessageListener {
             
             
             System.out.println(" Mot de la base de donnée : ");
-            this.connexionDB.GetListeMot("maison");
-            //System.out.println(listeMot);
+            //this.connexionDB.GetListeMot("abandon");
+            
+            
+            //System.out.println(listeMotsDeLaBDD);
             
             
             
@@ -102,7 +106,6 @@ public class CAM implements MessageListener {
             // Etape 1 ------- Calcul du taux de confiance
             Double tauxConfiance = taux.Traitement(messageFichierDecrypte);
             System.out.println("Taux de confiance du fichier décrypté : " + tauxConfiance + " %");
-
             
             // Etape 2 ------- Recherche de l'adresse email
             if (tauxConfiance > 10.0){

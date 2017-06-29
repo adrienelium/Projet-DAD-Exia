@@ -308,3 +308,8 @@ __pycache__/
 /J2EE/JMS/JMS-war/dist/
 /J2EE/JMS/JMS-ejb/dist/
 /J2EE/calculTauxConfiance/tauxConfiance/target/
+/J2EE/JPA_last/nbproject/
+/J2EE/JPA_last/target/
+/J2EE/calculTauxConfiance/tauxConfiance/nbproject/
+/J2EE/calculTauxConfiance/Traitements/nbproject/
+/J2EE/calculTauxConfiance/Traitements/target/
