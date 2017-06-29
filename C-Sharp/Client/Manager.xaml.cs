@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,15 +24,20 @@ namespace Client
     {
         private string token;
         private string username;
-        private List<string> contentfiles = new List<string>(); 
+        private List<string> contentfiles = new List<string>();
+        private List<string> namefiles = new List<string>();
+
+
         public Manager(string username,string token)
         {
             this.token = token;
             this.username = username;
             InitializeComponent();
 
-            DecryptageServiceClient service = new DecryptageServiceClient();
-            updateState(service.GetState(username, token));
+
+            Thread thState = new Thread(WorkState);
+            thState.Start();
+            
             // TODO Setup initial state
         }
 
@@ -52,6 +58,7 @@ namespace Client
                 foreach (string file in fileDialog.FileNames) {
                     System.IO.StreamReader sr = new System.IO.StreamReader(file);
                     contentfiles.Add(sr.ReadToEnd());
+                    namefiles.Add(file);
                     sr.Close();
                 }
             }
@@ -59,55 +66,93 @@ namespace Client
 
         private void updateState(State state)
         {
-            state.amount = 4; // TEST VALUE
+            //state.amount = 4; // TEST VALUE
 
-            labelcomment.Content = state.comment;
-            progress.Value = state.amount;
+            
 
-            switch (state.amount)
+            Dispatcher.BeginInvoke((Action)(() =>
             {
-                case 0:
-                    seeresult.IsEnabled = false;
+                
+
+                labelcomment.Content = state.comment;
+                progress.Value = state.amount;
+
+                if (state.amount == 0)
+                {
                     browse.IsEnabled = true;
-                    launchbutton.IsEnabled = false;
-                    break;
-                case 1:
-                    seeresult.IsEnabled = false;
+                    reset.IsEnabled = false;
+                }
+                else if (state.amount >= 10 && state.amount < 100)
+                {
                     browse.IsEnabled = false;
                     launchbutton.IsEnabled = false;
-                    break;
-                case 2:
-                    seeresult.IsEnabled = false;
-                    browse.IsEnabled = false;
-                    launchbutton.IsEnabled = false;
-                    break;
-                case 3:
-                    seeresult.IsEnabled = false;
-                    browse.IsEnabled = false;
-                    launchbutton.IsEnabled = false;
-                    break;
-                case 4:
+                    reset.IsEnabled = true;
+                }
+                else if(state.amount == 100)
+                {
+                    browse.IsEnabled = true;
+                    reset.IsEnabled = false;
+                }
+
+                if (state.resultExist)
+                {
                     seeresult.IsEnabled = true;
-                    browse.IsEnabled = true;
-                    launchbutton.IsEnabled = false;
-                    break;
-                default:
+                }
+                else
+                {
+                    seeresult.IsEnabled = false;
+                }
 
-                    break;
+            }));
 
-            }
+
+                
+
+            
+            
         }
 
         private void seeresult_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Coming soon !!");
-            // Open dialog with textbox for text and textbox for mail
+            DecryptageServiceClient service = new DecryptageServiceClient();
+            FrontWcfService.Result res = service.GetResult(username, token);
+
+            Result fenres = new Result(res.docname, res.content, res.taux, res.key);
+            fenres.Show();
         }
 
         private void launchbutton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Coming soon !!");
-            // launch request and thread state
+            MessageBoxResult result = MessageBox.Show("Bruteforce process will begin, confirm ?","Please confirm",MessageBoxButton.OKCancel,MessageBoxImage.Warning);
+            if (result == MessageBoxResult.OK)
+            {
+                DecryptageServiceClient service = new DecryptageServiceClient();
+                service.LaunchDecryptProcess(contentfiles.ToArray(),namefiles.ToArray(), username, token);
+            }
+        }
+
+        private void WorkState()
+        {
+            while(Thread.CurrentThread.IsAlive)
+            {
+                DecryptageServiceClient service = new DecryptageServiceClient();
+                updateState(service.GetState(username, token));
+
+                Thread.Sleep(1000);
+            }
+            
+        }
+
+        private void reset_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Bruteforce process will be interrupted, confirm ?", "Please confirm", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.OK)
+            {
+                DecryptageServiceClient service = new DecryptageServiceClient();
+                service.Reset(username, token);
+            }
+
+            
         }
     }
 }

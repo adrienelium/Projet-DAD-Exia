@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5fc4779b-7865-425e-8518-8130a54b7414" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:60430/FrontService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FrontService.disco" MetadataType="Disco" ID="6f637530-f433-4918-99ad-aaacf1b75c8c" SourceId="1" SourceUrl="http://localhost:60430/FrontService.svc?disco" />
+    <MetadataFile FileName="FrontService.xsd" MetadataType="Schema" ID="c3a67eae-0006-467b-a115-3a433081e7ef" SourceId="1" SourceUrl="http://localhost:60430/FrontService.svc?xsd=xsd1" />
+    <MetadataFile FileName="FrontService1.xsd" MetadataType="Schema" ID="e8f0a04d-693e-4f1b-aa32-3116b3e6f3fa" SourceId="1" SourceUrl="http://localhost:60430/FrontService.svc?xsd=xsd3" />
+    <MetadataFile FileName="FrontService.wsdl" MetadataType="Wsdl" ID="fe46f04f-7358-4d8f-a1ed-38f3942ad6d4" SourceId="1" SourceUrl="http://localhost:60430/FrontService.svc?wsdl" />
+    <MetadataFile FileName="FrontService2.xsd" MetadataType="Schema" ID="2fbf63ee-6b36-4c84-868c-8ca727abd57b" SourceId="1" SourceUrl="http://localhost:60430/FrontService.svc?xsd=xsd0" />
+    <MetadataFile FileName="FrontService3.xsd" MetadataType="Schema" ID="e6dd34ac-ccf2-42bc-a860-416701341383" SourceId="1" SourceUrl="http://localhost:60430/FrontService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

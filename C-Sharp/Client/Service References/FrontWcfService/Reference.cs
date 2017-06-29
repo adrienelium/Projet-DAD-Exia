@@ -105,6 +105,9 @@ namespace Client.FrontWcfService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string commentField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool resultExistField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -141,6 +144,112 @@ namespace Client.FrontWcfService {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool resultExist {
+            get {
+                return this.resultExistField;
+            }
+            set {
+                if ((this.resultExistField.Equals(value) != true)) {
+                    this.resultExistField = value;
+                    this.RaisePropertyChanged("resultExist");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Result", Namespace="http://schemas.datacontract.org/2004/07/FrontWcfService")]
+    [System.SerializableAttribute()]
+    public partial class Result : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string contentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string docnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string keyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int tauxField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string content {
+            get {
+                return this.contentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.contentField, value) != true)) {
+                    this.contentField = value;
+                    this.RaisePropertyChanged("content");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string docname {
+            get {
+                return this.docnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.docnameField, value) != true)) {
+                    this.docnameField = value;
+                    this.RaisePropertyChanged("docname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string key {
+            get {
+                return this.keyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.keyField, value) != true)) {
+                    this.keyField = value;
+                    this.RaisePropertyChanged("key");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int taux {
+            get {
+                return this.tauxField;
+            }
+            set {
+                if ((this.tauxField.Equals(value) != true)) {
+                    this.tauxField = value;
+                    this.RaisePropertyChanged("taux");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -162,16 +271,28 @@ namespace Client.FrontWcfService {
         System.Threading.Tasks.Task<Client.FrontWcfService.LogInfo> LoginAsync(Client.FrontWcfService.LogInfo loginInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/LaunchDecryptProcess", ReplyAction="http://tempuri.org/IDecryptageService/LaunchDecryptProcessResponse")]
-        bool LaunchDecryptProcess(string[] str, string token);
+        bool LaunchDecryptProcess(string[] str, string[] filesNames, string username, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/LaunchDecryptProcess", ReplyAction="http://tempuri.org/IDecryptageService/LaunchDecryptProcessResponse")]
-        System.Threading.Tasks.Task<bool> LaunchDecryptProcessAsync(string[] str, string token);
+        System.Threading.Tasks.Task<bool> LaunchDecryptProcessAsync(string[] str, string[] filesNames, string username, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/GetState", ReplyAction="http://tempuri.org/IDecryptageService/GetStateResponse")]
         Client.FrontWcfService.State GetState(string username, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/GetState", ReplyAction="http://tempuri.org/IDecryptageService/GetStateResponse")]
         System.Threading.Tasks.Task<Client.FrontWcfService.State> GetStateAsync(string username, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/Reset", ReplyAction="http://tempuri.org/IDecryptageService/ResetResponse")]
+        void Reset(string username, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/Reset", ReplyAction="http://tempuri.org/IDecryptageService/ResetResponse")]
+        System.Threading.Tasks.Task ResetAsync(string username, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/GetResult", ReplyAction="http://tempuri.org/IDecryptageService/GetResultResponse")]
+        Client.FrontWcfService.Result GetResult(string username, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDecryptageService/GetResult", ReplyAction="http://tempuri.org/IDecryptageService/GetResultResponse")]
+        System.Threading.Tasks.Task<Client.FrontWcfService.Result> GetResultAsync(string username, string token);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -209,12 +330,12 @@ namespace Client.FrontWcfService {
             return base.Channel.LoginAsync(loginInfo);
         }
         
-        public bool LaunchDecryptProcess(string[] str, string token) {
-            return base.Channel.LaunchDecryptProcess(str, token);
+        public bool LaunchDecryptProcess(string[] str, string[] filesNames, string username, string token) {
+            return base.Channel.LaunchDecryptProcess(str, filesNames, username, token);
         }
         
-        public System.Threading.Tasks.Task<bool> LaunchDecryptProcessAsync(string[] str, string token) {
-            return base.Channel.LaunchDecryptProcessAsync(str, token);
+        public System.Threading.Tasks.Task<bool> LaunchDecryptProcessAsync(string[] str, string[] filesNames, string username, string token) {
+            return base.Channel.LaunchDecryptProcessAsync(str, filesNames, username, token);
         }
         
         public Client.FrontWcfService.State GetState(string username, string token) {
@@ -223,6 +344,22 @@ namespace Client.FrontWcfService {
         
         public System.Threading.Tasks.Task<Client.FrontWcfService.State> GetStateAsync(string username, string token) {
             return base.Channel.GetStateAsync(username, token);
+        }
+        
+        public void Reset(string username, string token) {
+            base.Channel.Reset(username, token);
+        }
+        
+        public System.Threading.Tasks.Task ResetAsync(string username, string token) {
+            return base.Channel.ResetAsync(username, token);
+        }
+        
+        public Client.FrontWcfService.Result GetResult(string username, string token) {
+            return base.Channel.GetResult(username, token);
+        }
+        
+        public System.Threading.Tasks.Task<Client.FrontWcfService.Result> GetResultAsync(string username, string token) {
+            return base.Channel.GetResultAsync(username, token);
         }
     }
 }

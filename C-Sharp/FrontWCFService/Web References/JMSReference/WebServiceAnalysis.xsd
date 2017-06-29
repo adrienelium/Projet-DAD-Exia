@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://controller/" targetNamespace="http://controller/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="rechercheDocumentDecrypte" type="tns:rechercheDocumentDecrypte" />
+  <xs:element name="rechercheDocumentDecrypteResponse" type="tns:rechercheDocumentDecrypteResponse" />
+  <xs:complexType name="rechercheDocumentDecrypte">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usernameFile" type="xs:string" />
+      <xs:element minOccurs="0" name="decryptFile" type="xs:string" />
+      <xs:element minOccurs="0" name="nameFile" type="xs:string" />
+      <xs:element minOccurs="0" name="keyDecriptFile" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="rechercheDocumentDecrypteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

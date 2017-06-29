@@ -15,6 +15,33 @@ namespace FrontWcfService
     // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez Service1.svc ou Service1.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class FrontService : IDecryptageService
     {
+        private DecryptSystem systemDecry;
+
+        /// <summary>
+        /// Renvoi le resultat d'un traitement J2EE sous forme d'un objet Result
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public Result GetResult(string username, string token)
+        {
+            Result res = new Result();
+
+            if (AuthToken(username, token))
+            {
+                ModelUser userSystem = new ModelUser();
+                res = userSystem.getResult(username);
+            }
+
+            return res;
+        }
+
+        /// <summary>
+        /// Renvoi l'état de la demande en cours sous la forme d'un objet State.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public State GetState(string username, string token)
         {
             State state = new State();
@@ -29,20 +56,18 @@ namespace FrontWcfService
                         state.amount = 0;
                         state.comment = "Ready to bruteforce";
                         break;
-                    case 1:
-                        state.amount = 1;
-                        state.comment = "25% progress";
+                    case 10:
+                        int amount = 10;
+
+                        int res = userSystem.getPourcent(username);
+
+                        amount += res; 
+
+                        state.amount = amount;
+                        state.comment = amount + "% progress";
                         break;
-                    case 2:
-                        state.amount = 2;
-                        state.comment = "50% progress";
-                        break;
-                    case 3:
-                        state.amount = 3;
-                        state.comment = "75% progress";
-                        break;
-                    case 4:
-                        state.amount = 4;
+                    case 100:
+                        state.amount = 100;
                         state.comment = "100% Finished";
                         break;
                     default:
@@ -50,23 +75,54 @@ namespace FrontWcfService
                         break;
 
                 }
+
+                state.resultExist = userSystem.isResultExist(username);
+
                 
                 return state;
             }
             else
             {
-                state.amount = 0; // 0 ready - 1 25% key generated - 2 50% key generated - 3 75% key generated - 4 100% key generated
+                state.amount = 0; 
                 state.comment = "Invalid token";
                 return state;
             }
 
         }
 
-        public bool LaunchDecryptProcess(string[] str, string token)
+        /// <summary>
+        /// Lance le processus de décryptage des fichiers
+        /// </summary>
+        /// <param name="str">Tableau de fichiers sous forme de string</param>
+        /// <param name="filesNames">Tableau de nom de fichier sous forme de string</param>
+        /// <param name="username"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public bool LaunchDecryptProcess(string[] str, string[] filesNames, string username, string token)
         {
-            throw new NotImplementedException();
+            if (AuthToken(username, token))
+            {
+                ModelUser userSystem = new ModelUser();
+                userSystem.updateStat1True(username);
+                userSystem.resetResultByUsername(username);
+
+                systemDecry = new DecryptSystem();
+                systemDecry.Init(str, filesNames, username);
+                systemDecry.Start();
+
+                
+
+                return true;
+            }
+            else
+                return false;
         }
 
+        /// <summary>
+        /// Réalise une authentification en fonction de l'objet LogInfo envoyé
+        /// </summary>
+        /// <param name="loginInfo">Objet LogInfo contenant les crédentials</param>
+        /// <returns></returns>
         public LogInfo Login(LogInfo loginInfo)
         {
             ModelUser userSystem = new ModelUser();
@@ -79,6 +135,7 @@ namespace FrontWcfService
                 userSystem.updateUserToken(idUser, token);
 
                 loginInfo.token = token;
+
                 return loginInfo;
             }
             else
@@ -89,13 +146,32 @@ namespace FrontWcfService
 
         }
 
+        /// <summary>
+        /// Annule un traitement Bruteforce
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="token"></param>
+        public void Reset(string username, string token)
+        {
+            ModelUser userSystem = new ModelUser();
+            if (AuthToken(username, token))
+            {
+                userSystem.updateResetStatAndPourcent(username);
+            }
+        }
+
         private bool AuthToken(string username ,string token)
         {
             ModelUser userSystem = new ModelUser();
             if (userSystem.isTokenExist(username, token))
+            {
                 return true;
+            }   
             else
+            {
                 return false;
+            }
+                
         }
     }
 }

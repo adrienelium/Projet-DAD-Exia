@@ -17,10 +17,16 @@ namespace FrontWcfService
         LogInfo Login(LogInfo loginInfo);
 
         [OperationContract]
-        bool LaunchDecryptProcess(string[] str,string token);
+        bool LaunchDecryptProcess(string[] str, string[] filesNames, string username, string token);
 
         [OperationContract]
         State GetState(string username, string token);
+
+        [OperationContract]
+        void Reset(string username, string token);
+
+        [OperationContract]
+        Result GetResult(string username, string token);
 
         // TODO: ajoutez vos opérations de service ici
     }
@@ -49,7 +55,24 @@ namespace FrontWcfService
 
         [DataMember]
         public int amount { get; set; }
-        
 
+        [DataMember]
+        public bool resultExist { get; set; }
+    }
+
+    public class Result
+    {
+
+        [DataMember]
+        public string docname { get; set; }
+
+        [DataMember]
+        public string content { get; set; }
+
+        [DataMember]
+        public int taux { get; set; }
+
+        [DataMember]
+        public string key { get; set; }
     }
 }

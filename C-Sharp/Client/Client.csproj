@@ -61,6 +61,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="App_Code\WpfService.cs" />
+    <Compile Include="Result.xaml.cs">
+      <DependentUpon>Result.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\FrontWcfService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,6 +82,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Manager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Result.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -110,6 +117,9 @@
     </None>
     <AppDesigner Include="Properties\" />
     <None Include="Service References\FrontWcfService\Client.FrontWcfService.LogInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FrontWcfService\Client.FrontWcfService.Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\FrontWcfService\Client.FrontWcfService.State.datasource">
@@ -152,6 +162,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CUC-Client\CUC-Client.csproj">
+      <Project>{ac2d488a-ad0e-4c77-8e12-aed0d1846f67}</Project>
+      <Name>CUC-Client</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

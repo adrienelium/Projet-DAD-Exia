@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://controller/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="WebServiceAnalysis" targetNamespace="http://controller/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://10.131.129.87:12080/JMS-war/WebServiceAnalysis?xsd=1" namespace="http://controller/" />
+    </xsd:schema>
+  </types>
+  <message name="rechercheDocumentDecrypte">
+    <part name="parameters" element="tns:rechercheDocumentDecrypte" />
+  </message>
+  <message name="rechercheDocumentDecrypteResponse">
+    <part name="parameters" element="tns:rechercheDocumentDecrypteResponse" />
+  </message>
+  <portType name="DecryptWebService">
+    <operation name="rechercheDocumentDecrypte">
+      <input wsam:Action="http://controller/DecryptWebService/rechercheDocumentDecrypteRequest" message="tns:rechercheDocumentDecrypte" />
+      <output wsam:Action="http://controller/DecryptWebService/rechercheDocumentDecrypteResponse" message="tns:rechercheDocumentDecrypteResponse" />
+    </operation>
+  </portType>
+  <binding name="DecryptWebServicePortBinding" type="tns:DecryptWebService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="rechercheDocumentDecrypte">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="WebServiceAnalysis">
+    <port name="DecryptWebServicePort" binding="tns:DecryptWebServicePortBinding">
+      <soap:address location="http://10.131.129.87:12080/JMS-war/WebServiceAnalysis" />
+    </port>
+  </service>
+</definitions>

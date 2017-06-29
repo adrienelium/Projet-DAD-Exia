@@ -14,6 +14,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyGenerator", "..\Proof Of
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokenGen", "TokenGen\TokenGen.csproj", "{909DEB0D-A4D5-45FF-A6AC-4B62CB17EEE0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUC-Client", "CUC-Client\CUC-Client.csproj", "{AC2D488A-AD0E-4C77-8E12-AED0D1846F67}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2FF94FF9-F61E-4A74-AE9D-FF88DA9BE38E} = {2FF94FF9-F61E-4A74-AE9D-FF88DA9BE38E}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +41,10 @@ Global
 		{909DEB0D-A4D5-45FF-A6AC-4B62CB17EEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{909DEB0D-A4D5-45FF-A6AC-4B62CB17EEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{909DEB0D-A4D5-45FF-A6AC-4B62CB17EEE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC2D488A-AD0E-4C77-8E12-AED0D1846F67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC2D488A-AD0E-4C77-8E12-AED0D1846F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC2D488A-AD0E-4C77-8E12-AED0D1846F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC2D488A-AD0E-4C77-8E12-AED0D1846F67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
