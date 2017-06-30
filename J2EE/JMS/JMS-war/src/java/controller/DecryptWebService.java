@@ -47,8 +47,10 @@ public class DecryptWebService {
             context.createProducer().send(mydes, msg);
             
             return "Le message est send au serveur.";
+            //System.out.println("Le message est send au serveur.");
         }else{
             return "Erreur lors de l'envoi du message au serveur. Des informations sont manquantes.";
+            //System.out.println("Erreur lors de l'envoi du message au serveur. Des informations sont manquantes.");
         }        
     }
 }
