@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CAM-DecryptSystem.cs" />
+    <Compile Include="App_Code\MailManager.cs" />
     <Compile Include="ResultService.svc.cs">
       <DependentUpon>ResultService.svc</DependentUpon>
     </Compile>

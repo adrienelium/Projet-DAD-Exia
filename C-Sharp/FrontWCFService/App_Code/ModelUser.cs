@@ -112,6 +112,30 @@ namespace FrontWcfService.App_Code
             }
         }
 
+        public string getMailByUsername(string username)
+        {
+            using (SqlConnection conn = new SqlConnection())
+            {
+
+                conn.ConnectionString = strConn;
+                conn.Open();
+
+                SqlCommand command = new SqlCommand("SELECT email FROM Users WHERE username = @0", conn);
+                command.Parameters.Add(new SqlParameter("0", username));
+
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+
+                string res = reader.GetString(0);
+
+                reader.Close();
+                conn.Close();
+
+                return res;
+
+            }
+        }
+
         public Result getResult(string username)
         {
             using (SqlConnection conn = new SqlConnection())

@@ -81,6 +81,8 @@ namespace FrontWcfService
                     string usernameres = objres[4];
                     userSystem.updateStat2True(username);
                     userSystem.updateResultByUsername(docname, content, taux, key, usernameres);
+
+                    MailManager.getInstance().sendEmailResult(username);
                 }
                 
 
