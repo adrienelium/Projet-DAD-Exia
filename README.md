@@ -19,6 +19,10 @@ On observe sur l'UML que le Front Service possède 2 entrées (EndPoint), l'un a
 
 La classe DecryptSystem est le gestionnaire centrale du système, il orchestre les traitements et envois les tâches à effectué au bloc J2EE. La classe ModelUser permet d'interargir directement avec la base de données. 
 
+Diagramme UML de la partie J2EE
+
+![alt tag](https://github.com/adrienelium/Projet-DAD-Exia/blob/master/Documents%20annexes/Diagrammes%20J2EE/UML_Java_ee.JPG)
+
 ## Analyse technique
 L'enjeux technique majeur réside dans la génération des clés de déchiffrement, les clés sont encodées sur 48bit soit 6 caractères (1 caractère = 8bit).
 En terme de complexité algorithmique cela nous donne l'équation ci-dessous :
