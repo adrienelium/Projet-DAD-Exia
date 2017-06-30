@@ -34,7 +34,7 @@ namespace Client
             this.username = username;
             InitializeComponent();
 
-
+            Title = "DAD Manager : " + username;
             Thread thState = new Thread(WorkState);
             thState.Start();
             

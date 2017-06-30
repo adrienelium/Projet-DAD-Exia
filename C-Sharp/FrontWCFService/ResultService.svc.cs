@@ -29,6 +29,7 @@ namespace FrontWcfService
 
             userSystem.updateStat2True(username);
             userSystem.updateResultByUsername(docname, content, taux, key, username);
+            MailManager.getInstance().sendEmailResult(username);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace FrontWcfService.App_Code
 
         private MailManager()
         {
-            fromAddress = new MailAddress("meltzer.adrien@gmail.com", "From Name");           
+            fromAddress = new MailAddress("meltzer.adrien@gmail.com", "DAD System");           
         }
 
         public void sendEmailResult(string username_destinataire)

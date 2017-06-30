@@ -70,7 +70,7 @@ namespace FrontWcfService
                     userSystem.updatePourcent(username, Convert.ToInt32(res));
                 }
 
-                string[] objres = obj.getResult();
+                /*string[] objres = obj.getResult();
 
                 if (objres.Length == 5) // Resultat obtenu
                 {
@@ -83,7 +83,7 @@ namespace FrontWcfService
                     userSystem.updateResultByUsername(docname, content, taux, key, usernameres);
 
                     MailManager.getInstance().sendEmailResult(username);
-                }
+                }*/
                 
 
                 if (!userSystem.getStat1(username) || userSystem.isResultExist(username))
