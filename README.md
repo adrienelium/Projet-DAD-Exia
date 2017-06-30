@@ -23,7 +23,10 @@ La classe DecryptSystem est le gestionnaire centrale du système, il orchestre l
 L'enjeux technique majeur réside dans la génération des clés de déchiffrement, les clés sont encodées sur 48bit soit 6 caractères (1 caractère = 8bit).
 En terme de complexité algorithmique cela nous donne l'équation ci-dessous :
 
-F x C x A soit Nombre de fichier X Clé alphabétique exposant taille de la clé X Algorithme de chiffrmeent
+F x C x A soit Nombre de fichier X Clé alphabétique exposant taille de la clé X Algorithme de chiffrement
+
+L'algorithme de chiffrement symétrique imposé est le XOR.
+
 ## Analyse des écarts
 Les écarts sont noté entre [].
 
@@ -82,7 +85,9 @@ Stockage en base des informations du fichier
 
 
 ## Bilan
-Conclusion.
+Pour conclure sur ce projet nous obersvons des temps de calcul important sur la génération de clé, en effet, pour une clé de 6 caractères, le nombre de combinaisons possible est d'environ 300 millions.
+
+En terme de résultat nouos avons trouvé la première adresse mail, le système est toujorus en cours de génération pour trouver la deuxieme adresse mail dans les fichiers à décryptés.
 
 #### Ressources annexes
 Gitignore files : https://github.com/github/gitignore
