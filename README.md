@@ -27,35 +27,57 @@ F x C x A soit Nombre de fichier X Clé alphabétique exposant taille de la clé
 ## Analyse des écarts
 Les écarts sont noté entre [].
 
-### Client .NET
+#### Client .NET
 Distribution compilée
+
 Exécution fonctionnelle
+
 Saisie des crédentials
+
 Traitement asynchrone
+
 IHM de qualité
+
 Designs pattern
+
 [NetTCP]
 
-### Serveur frontal WCF
+#### Serveur frontal WCF
 Serveur fonctionnel
+
 Authentification optimisée
+
 Génération de clef
+
 Déchiffrement
+
 Stockage des credentials et tokens en BDD
+
 Connexion multi-client
+
 Journalisation des logs
+
 Designs pattern
+
 [Communication 128bits]
 
-### Java EE
+#### Java EE
 Utilisation d’un queue JMS
+
 Middleware fonctionnel
+
 Détermination du taux de confiance
+
 Recherche d’adresse e-mail
+
 Comparaison avec le dictionnaire
+
 Interface Web avec JSF
+
 Administration du dictionnaire via l’interface Web
+
 Stockage en base des informations du fichier 
+
 [Envoi de données au WCF]
 
 
