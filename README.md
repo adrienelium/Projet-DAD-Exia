@@ -23,6 +23,8 @@ Diagramme UML de la partie J2EE
 
 ![alt tag](https://github.com/adrienelium/Projet-DAD-Exia/blob/master/Documents%20annexes/Diagrammes%20J2EE/UML_Java_ee.JPG)
 
+Comme observé dans le découpage fonctionnel, on constate sur le diagramme UML ci-dessus que la partie JMS (transport de message) est séparée de la partie traitement des données et recherche de mail.
+
 ## Analyse technique
 L'enjeux technique majeur réside dans la génération des clés de déchiffrement, les clés sont encodées sur 48bit soit 6 caractères (1 caractère = 8bit).
 En terme de complexité algorithmique cela nous donne l'équation ci-dessous :
