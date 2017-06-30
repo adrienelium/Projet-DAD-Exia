@@ -4,7 +4,12 @@ Equipe : Adrien Meltzer - Matthew Allen - Michael Jach
 ![alt tag](https://github.com/adrienelium/Projet-BI/blob/master/MadeInExiaCesi.jpg)
 
 ## Introduction
-Introduction ici.
+Le projet Développement Distribuée à pour but de développé un processus de décryptage de fichier avec les technologies WCF (Windows Communication Foundation) et J2EE.
+
+Ci-dessous le découpage fonctionnel du projet.
+
+![alt tag](https://github.com/adrienelium/Projet-DAD-Exia/blob/master/Documents%20annexes/DecoupageFonctionnel.png)
+
 ## Modélisation UML commentée de l’application distribuée
 UML du server Front WCF.
 
@@ -15,10 +20,45 @@ On observe sur l'UML que le Front Service possède 2 entrées (EndPoint), l'un a
 La classe DecryptSystem est le gestionnaire centrale du système, il orchestre les traitements et envois les tâches à effectué au bloc J2EE. La classe ModelUser permet d'interargir directement avec la base de données. 
 
 ## Analyse technique
-F x C x A
-Nombre de fichier X Clé alphabétique exposant taille de la clé X Algorithme de chiffrmeent (2-3 algo)
+L'enjeux technique majeur réside dans la génération des clés de déchiffrement, les clés sont encodées sur 48bit soit 6 caractères (1 caractère = 8bit).
+En terme de complexité algorithmique cela nous donne l'équation ci-dessous :
+
+F x C x A soit Nombre de fichier X Clé alphabétique exposant taille de la clé X Algorithme de chiffrmeent
 ## Analyse des écarts
-Analyse des écarts ici.
+Les écarts sont noté entre [].
+
+### Client .NET
+Distribution compilée
+Exécution fonctionnelle
+Saisie des crédentials
+Traitement asynchrone
+IHM de qualité
+Designs pattern
+[NetTCP]
+
+### Serveur frontal WCF
+Serveur fonctionnel
+Authentification optimisée
+Génération de clef
+Déchiffrement
+Stockage des credentials et tokens en BDD
+Connexion multi-client
+Journalisation des logs
+Designs pattern
+[Communication 128bits]
+
+### Java EE
+Utilisation d’un queue JMS
+Middleware fonctionnel
+Détermination du taux de confiance
+Recherche d’adresse e-mail
+Comparaison avec le dictionnaire
+Interface Web avec JSF
+Administration du dictionnaire via l’interface Web
+Stockage en base des informations du fichier 
+[Envoi de données au WCF]
+
+
 ## Bilan
 Conclusion.
 
