@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://controller/" targetNamespace="http://controller/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="getResult" type="tns:getResult" />
+  <xs:element name="getResultResponse" type="tns:getResultResponse" />
   <xs:element name="rechercheDocumentDecrypte" type="tns:rechercheDocumentDecrypte" />
   <xs:element name="rechercheDocumentDecrypteResponse" type="tns:rechercheDocumentDecrypteResponse" />
+  <xs:complexType name="getResult">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getResultResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="rechercheDocumentDecrypte">
     <xs:sequence>
       <xs:element minOccurs="0" name="usernameFile" type="xs:string" />

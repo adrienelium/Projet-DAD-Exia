@@ -5,20 +5,39 @@
       <xsd:import schemaLocation="http://10.131.129.87:12080/JMS-war/WebServiceAnalysis?xsd=1" namespace="http://controller/" />
     </xsd:schema>
   </types>
+  <message name="getResult">
+    <part name="parameters" element="tns:getResult" />
+  </message>
+  <message name="getResultResponse">
+    <part name="parameters" element="tns:getResultResponse" />
+  </message>
   <message name="rechercheDocumentDecrypte">
     <part name="parameters" element="tns:rechercheDocumentDecrypte" />
   </message>
   <message name="rechercheDocumentDecrypteResponse">
     <part name="parameters" element="tns:rechercheDocumentDecrypteResponse" />
   </message>
-  <portType name="DecryptWebService">
+  <portType name="SOAPWebService">
+    <operation name="getResult">
+      <input wsam:Action="http://controller/SOAPWebService/getResultRequest" message="tns:getResult" />
+      <output wsam:Action="http://controller/SOAPWebService/getResultResponse" message="tns:getResultResponse" />
+    </operation>
     <operation name="rechercheDocumentDecrypte">
-      <input wsam:Action="http://controller/DecryptWebService/rechercheDocumentDecrypteRequest" message="tns:rechercheDocumentDecrypte" />
-      <output wsam:Action="http://controller/DecryptWebService/rechercheDocumentDecrypteResponse" message="tns:rechercheDocumentDecrypteResponse" />
+      <input wsam:Action="http://controller/SOAPWebService/rechercheDocumentDecrypteRequest" message="tns:rechercheDocumentDecrypte" />
+      <output wsam:Action="http://controller/SOAPWebService/rechercheDocumentDecrypteResponse" message="tns:rechercheDocumentDecrypteResponse" />
     </operation>
   </portType>
-  <binding name="DecryptWebServicePortBinding" type="tns:DecryptWebService">
+  <binding name="SOAPWebServicePortBinding" type="tns:SOAPWebService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getResult">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="rechercheDocumentDecrypte">
       <soap:operation soapAction="" />
       <input>
@@ -30,7 +49,7 @@
     </operation>
   </binding>
   <service name="WebServiceAnalysis">
-    <port name="DecryptWebServicePort" binding="tns:DecryptWebServicePortBinding">
+    <port name="SOAPWebServicePort" binding="tns:SOAPWebServicePortBinding">
       <soap:address location="http://10.131.129.87:12080/JMS-war/WebServiceAnalysis" />
     </port>
   </service>

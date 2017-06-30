@@ -59,6 +59,7 @@ namespace FrontWcfService
         private void ManagerKeyProcess()
         {
             Thread.Sleep(3000);
+            JMSReference.WebServiceAnalysis obj = new JMSReference.WebServiceAnalysis();
             while (Thread.CurrentThread.IsAlive)
             {
                 ModelUser userSystem = new ModelUser();
@@ -69,10 +70,24 @@ namespace FrontWcfService
                     userSystem.updatePourcent(username, Convert.ToInt32(res));
                 }
 
+                string[] objres = obj.getResult();
+
+                if (objres.Length == 5) // Resultat obtenu
+                {
+                    string docname = objres[0];
+                    string content = objres[1];
+                    string taux = objres[2];
+                    string key = objres[3];
+                    string usernameres = objres[4];
+                    userSystem.updateStat2True(username);
+                    userSystem.updateResultByUsername(docname, content, taux, key, usernameres);
+                }
+                
+
                 if (!userSystem.getStat1(username) || userSystem.isResultExist(username))
                     Stop();
 
-                Thread.Sleep(100);
+                Thread.Sleep(400);
                 
             }
             

@@ -26,8 +26,10 @@ namespace FrontWcfService.JMSReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Web.Services.WebServiceBindingAttribute(Name="DecryptWebServicePortBinding", Namespace="http://controller/")]
+    [System.Web.Services.WebServiceBindingAttribute(Name="SOAPWebServicePortBinding", Namespace="http://controller/")]
     public partial class WebServiceAnalysis : System.Web.Services.Protocols.SoapHttpClientProtocol {
+        
+        private System.Threading.SendOrPostCallback getResultOperationCompleted;
         
         private System.Threading.SendOrPostCallback rechercheDocumentDecrypteOperationCompleted;
         
@@ -70,7 +72,38 @@ namespace FrontWcfService.JMSReference {
         }
         
         /// <remarks/>
+        public event getResultCompletedEventHandler getResultCompleted;
+        
+        /// <remarks/>
         public event rechercheDocumentDecrypteCompletedEventHandler rechercheDocumentDecrypteCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://controller/", ResponseNamespace="http://controller/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+        public string[] getResult() {
+            object[] results = this.Invoke("getResult", new object[0]);
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getResultAsync() {
+            this.getResultAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getResultAsync(object userState) {
+            if ((this.getResultOperationCompleted == null)) {
+                this.getResultOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetResultOperationCompleted);
+            }
+            this.InvokeAsync("getResult", new object[0], this.getResultOperationCompleted, userState);
+        }
+        
+        private void OngetResultOperationCompleted(object arg) {
+            if ((this.getResultCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getResultCompleted(this, new getResultCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://controller/", ResponseNamespace="http://controller/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -124,6 +157,32 @@ namespace FrontWcfService.JMSReference {
                 return true;
             }
             return false;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void getResultCompletedEventHandler(object sender, getResultCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getResultCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getResultCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
         }
     }
     
